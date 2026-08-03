@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上海校招岗位看板 | SHIEP Job Board</title>
+<style>
+  :root {
+    --primary: #0a1f3f;
+    --primary-light: #152d5a;
+    --accent: #1a5fb4;
+    --accent-light: #3584e4;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-500: #64748b;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--gray-100);
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(53,132,228,0.15) 0%, transparent 70%);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3584e4, #1a5fb4, #0a1f3f);
+  }
+  .header-content { position: relative; z-index: 1; }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .header .stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .header .stat-item {
+    text-align: center;
+  }
+  .header .stat-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #60a5fa;
+    display: block;
+  }
+  .header .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .controls {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 20px 24px;
+    margin-top: -28px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 10px 16px 10px 40px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+    background: var(--gray-50);
+  }
+  .search-box input:focus {
+    border-color: var(--accent);
+    background: var(--white);
+  }
+  .search-box .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-500);
+    font-size: 1rem;
+  }
+  .filter-select {
+    padding: 10px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    background: var(--gray-50);
+    color: var(--gray-700);
+    cursor: pointer;
+    outline: none;
+    min-width: 140px;
+    transition: border-color 0.2s;
+  }
+  .filter-select:focus {
+    border-color: var(--accent);
+  }
+  .clear-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    color: var(--gray-500);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .clear-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .result-count {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .cards-container {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .job-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: box-shadow 0.2s, transform 0.15s;
+    border-left: 4px solid transparent;
+    cursor: default;
+  }
+  .job-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  .job-card:nth-child(odd) { border-left-color: var(--accent); }
+
+  .company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .logo-energy { background: linear-gradient(135deg, #1a5fb4, #3584e4); }
+  .logo-finance { background: linear-gradient(135deg, #b45309, #d97706); }
+  .logo-tech { background: linear-gradient(135deg, #6d28d9, #8b5cf6); }
+  .logo-manufacture { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+  .logo-construction { background: linear-gradient(135deg, #b91c1c, #ef4444); }
+  .logo-education { background: linear-gradient(135deg, #15803d, #22c55e); }
+  .logo-other { background: linear-gradient(135deg, #475569, #64748b); }
+
+  .card-info { flex: 1; min-width: 0; }
+  .card-company {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-meta {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .tag-industry {
+    background: #eff6ff;
+    color: #1e40af;
+  }
+  .tag-type {
+    background: #f0fdf4;
+    color: #166534;
+  }
+  .tag-date {
+    background: var(--gray-100);
+    color: var(--gray-500);
+    font-size: 0.82rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray-500);
+  }
+  .empty-state p { font-size: 1.05rem; }
+
+  .footer {
+    background: var(--primary);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 24px;
+    font-size: 0.85rem;
+  }
+  .footer a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .header .stats { gap: 20px; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .result-count { margin-left: 0; text-align: center; }
+    .job-card { flex-wrap: wrap; padding: 14px 16px; }
+    .card-tags { width: 100%; justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <h1>⚡ 上海校招岗位看板</h1>
+    <p class="subtitle">Shanghai University of Electric Power · Job Board</p>
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-num" id="totalCount">0</span>
+        <span class="stat-label">岗位总数</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="energyCount">0</span>
+        <span class="stat-label">电力能源</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="financeCount">0</span>
+        <span class="stat-label">金融证券</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="techCount">0</span>
+        <span class="stat-label">互联网科技</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="controls">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="搜索公司名称..." oninput="renderCards()">
+    </div>
+    <select class="filter-select" id="industryFilter" onchange="renderCards()">
+      <option value="">全部行业</option>
+      <option value="电力能源">⚡ 电力能源</option>
+      <option value="金融证券">💰 金融证券</option>
+      <option value="互联网科技">💻 互联网科技</option>
+      <option value="制造业">🏭 制造业</option>
+      <option value="建筑施工">🏗️ 建筑施工</option>
+      <option value="教育">🎓 教育</option>
+      <option value="其他">📋 其他</option>
+    </select>
+    <select class="filter-select" id="typeFilter" onchange="renderCards()">
+      <option value="">全部类型</option>
+      <option value="校招">校招</option>
+      <option value="实习">实习</option>
+    </select>
+    <button class="clear-btn" onclick="clearFilters()">✕ 清除</button>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+
+  <div class="cards-container" id="cardsContainer"></div>
+</div>
+
+<footer class="footer">
+  <p>数据来源：<a href="https://career.shiep.edu.cn" target="_blank">上海电力大学就业信息网</a>&nbsp;&nbsp;|&nbsp;&nbsp;部分企业为电力行业典型校招企业补充数据</p>
+  <p style="margin-top:4px;">© 2026 SHIEP Job Board · 仅供信息参考</p>
+</footer>
+
+<script>
+var DATA = [
+  {"company": "山东泰开电力电子有限公司", "date": "2026-07-10", "industry": "电力能源", "type": "校招"},
+  {"company": "福建鑫叶投资管理集团有限公司", "date": "2026-07-10", "industry": "其他", "type": "校招"},
+  {"company": "清华附中嘉兴实验学校", "date": "2026-07-07", "industry": "教育", "type": "校招"},
+  {"company": "武汉高德红外股份有限公司", "date": "2026-06-23", "industry": "制造业", "type": "校招"},
+  {"company": "深圳市环通认证中心有限公司河南分公司", "date": "2026-06-17", "industry": "其他", "type": "校招"},
+  {"company": "杭州联合银行", "date": "2026-06-17", "industry": "金融证券", "type": "实习"},
+  {"company": "中信证券", "date": "2026-06-16", "industry": "金融证券", "type": "实习"},
+  {"company": "河北雄安育雄科技服务有限责任公司", "date": "2026-06-14", "industry": "互联网科技", "type": "校招"},
+  {"company": "中国电建集团贵阳勘测设计研究院有限公司", "date": "2026-06-12", "industry": "电力能源", "type": "实习"},
+  {"company": "中国电建集团西北勘测设计研究院有限公司", "date": "2026-06-04", "industry": "电力能源", "type": "实习"},
+  {"company": "三井住友银行（中国）有限公司", "date": "2026-05-28", "industry": "金融证券", "type": "实习"},
+  {"company": "福建闽投湄洲湾发电有限公司", "date": "2026-05-27", "industry": "电力能源", "type": "校招"},
+  {"company": "中家院（北京）检测认证有限公司宁波分公司", "date": "2026-05-26", "industry": "其他", "type": "校招"},
+  {"company": "中国移动广西公司", "date": "2026-05-26", "industry": "互联网科技", "type": "实习"},
+  {"company": "中国绿发投资集团有限公司", "date": "2026-05-25", "industry": "电力能源", "type": "校招"},
+  {"company": "新疆中泰新能源有限公司", "date": "2026-05-19", "industry": "电力能源", "type": "校招"},
+  {"company": "国能新疆甘泉堡综合能源有限公司", "date": "2026-05-15", "industry": "电力能源", "type": "校招"},
+  {"company": "烟台东方威思顿电气有限公司", "date": "2026-05-11", "industry": "制造业", "type": "校招"},
+  {"company": "西山居", "date": "2026-05-06", "industry": "互联网科技", "type": "校招"},
+  {"company": "杭州银行", "date": "2026-05-06", "industry": "金融证券", "type": "实习"},
+  {"company": "嘉兴恒创电力集团有限公司", "date": "2026-05-01", "industry": "电力能源", "type": "校招"},
+  {"company": "中国民生银行苏州分行", "date": "2026-04-30", "industry": "金融证券", "type": "校招"},
+  {"company": "申能集团", "date": "2026-04-29", "industry": "电力能源", "type": "实习"},
+  {"company": "江苏国信扬州发电有限责任公司", "date": "2026-04-28", "industry": "电力能源", "type": "校招"},
+  {"company": "运城学院", "date": "2026-04-28", "industry": "教育", "type": "校招"},
+  {"company": "杭州海康威视数字技术股份有限公司", "date": "2026-04-27", "industry": "互联网科技", "type": "校招"},
+  {"company": "广东能源集团", "date": "2026-04-24", "industry": "电力能源", "type": "校招"},
+  {"company": "中国民生银行宁波分行", "date": "2026-04-23", "industry": "金融证券", "type": "校招"},
+  {"company": "湖南能源集团", "date": "2026-04-20", "industry": "电力能源", "type": "校招"},
+  {"company": "中国民生银行杭州分行", "date": "2026-04-20", "industry": "金融证券", "type": "校招"},
+  {"company": "中国广核新能源控股有限公司", "date": "2026-04-16", "industry": "电力能源", "type": "校招"},
+  {"company": "中国电建贵州院", "date": "2026-04-16", "industry": "电力能源", "type": "校招"},
+  {"company": "河南森源电气股份有限公司", "date": "2026-04-16", "industry": "制造业", "type": "校招"},
+  {"company": "中山粤海能源有限公司", "date": "2026-04-13", "industry": "电力能源", "type": "校招"},
+  {"company": "华润电力投资有限公司", "date": "2026-04-10", "industry": "电力能源", "type": "校招"},
+  {"company": "中国光大银行上海分行", "date": "2026-04-10", "industry": "金融证券", "type": "校招"},
+  {"company": "江西银行", "date": "2026-04-09", "industry": "金融证券", "type": "校招"},
+  {"company": "中国三峡新能源（集团）股份有限公司", "date": "2026-04-09", "industry": "电力能源", "type": "校招"},
+  {"company": "中天合创能源有限责任公司化工分公司", "date": "2026-04-08", "industry": "电力能源", "type": "校招"},
+  {"company": "杭州砺盈科技有限公司", "date": "2026-04-08", "industry": "互联网科技", "type": "校招"},
+  {"company": "虎牙", "date": "2026-04-07", "industry": "互联网科技", "type": "校招"},
+  {"company": "大连银行", "date": "2026-04-07", "industry": "金融证券", "type": "校招"},
+  {"company": "浙商银行宁波分行", "date": "2026-04-07", "industry": "金融证券", "type": "校招"},
+  {"company": "广东天安项目管理有限公司", "date": "2026-04-07", "industry": "建筑施工", "type": "校招"},
+  {"company": "金融壹账通", "date": "2026-04-03", "industry": "金融证券", "type": "校招"},
+  {"company": "中煤新集能源股份有限公司", "date": "2026-04-02", "industry": "电力能源", "type": "校招"},
+  {"company": "宝丰集团", "date": "2026-04-01", "industry": "制造业", "type": "校招"},
+  {"company": "科大国创软件股份有限公司", "date": "2026-04-01", "industry": "互联网科技", "type": "校招"},
+  {"company": "杭州一米房地产经纪有限公司", "date": "2026-04-01", "industry": "其他", "type": "校招"},
+  {"company": "华阳建投阳泉热电有限责任公司", "date": "2026-03-31", "industry": "电力能源", "type": "校招"},
+  {"company": "渤海银行", "date": "2026-03-31", "industry": "金融证券", "type": "校招"},
+  {"company": "江苏省国信集团", "date": "2026-03-30", "industry": "电力能源", "type": "校招"},
+  {"company": "国泰海通证券上海分公司", "date": "2026-03-30", "industry": "金融证券", "type": "校招"},
+  {"company": "江西赣能股份有限公司丰城发电厂", "date": "2026-03-27", "industry": "电力能源", "type": "校招"},
+  {"company": "中国工商银行广西分行", "date": "2026-03-27", "industry": "金融证券", "type": "校招"},
+  {"company": "图木舒克职业技术学院", "date": "2026-03-27", "industry": "教育", "type": "校招"},
+  {"company": "丽水移动", "date": "2026-03-26", "industry": "互联网科技", "type": "校招"},
+  {"company": "江苏邦泰电气有限公司", "date": "2026-03-26", "industry": "制造业", "type": "校招"},
+  {"company": "光宝新创科技（北京）有限公司", "date": "2026-03-25", "industry": "互联网科技", "type": "校招"},
+  {"company": "亚信科技（中国）有限公司", "date": "2026-03-25", "industry": "互联网科技", "type": "校招"},
+  {"company": "丝芙兰（上海）化妆品销售有限公司", "date": "2026-03-25", "industry": "其他", "type": "校招"},
+  {"company": "中国移动宁波分公司", "date": "2026-03-24", "industry": "互联网科技", "type": "校招"},
+  {"company": "阿斯麦(ASML)", "date": "2026-03-24", "industry": "制造业", "type": "校招"},
+  {"company": "中国农业银行浙江省分行", "date": "2026-03-23", "industry": "金融证券", "type": "校招"},
+  {"company": "中国移动通信集团云南有限公司", "date": "2026-03-23", "industry": "互联网科技", "type": "校招"},
+  {"company": "神马电力", "date": "2026-03-23", "industry": "制造业", "type": "校招"},
+  {"company": "中国电建集团西北勘测设计研究院有限公司", "date": "2026-03-23", "industry": "电力能源", "type": "校招"},
+  {"company": "中国大唐集团有限公司重庆分公司", "date": "2026-03-21", "industry": "电力能源", "type": "校招"},
+  {"company": "宝钢湛江钢铁有限公司", "date": "2026-03-20", "industry": "制造业", "type": "校招"},
+  {"company": "河北新天科创新能源技术有限公司", "date": "2026-03-19", "industry": "电力能源", "type": "校招"},
+  {"company": "中国移动通信集团陕西有限公司", "date": "2026-03-19", "industry": "互联网科技", "type": "校招"},
+  {"company": "掌上先机/慧策", "date": "2026-03-18", "industry": "互联网科技", "type": "校招"},
+  {"company": "中国银行股份有限公司上海市分行", "date": "2026-03-18", "industry": "金融证券", "type": "校招"},
+  {"company": "中国银行新疆维吾尔自治区分行", "date": "2026-03-18", "industry": "金融证券", "type": "校招"},
+  {"company": "申能股份有限公司", "date": "2026-03-18", "industry": "电力能源", "type": "校招"},
+  {"company": "广东省烟草专卖局（公司）", "date": "2026-03-18", "industry": "其他", "type": "校招"},
+  {"company": "中国建设银行上海市分行", "date": "2026-03-17", "industry": "金融证券", "type": "校招"},
+  {"company": "湖北交通投资集团有限公司", "date": "2026-03-17", "industry": "建筑施工", "type": "校招"},
+  {"company": "广东电网", "date": "2026-03-17", "industry": "电力能源", "type": "校招"},
+  {"company": "正浩创新EcoFlow", "date": "2026-03-17", "industry": "制造业", "type": "校招"},
+  {"company": "上海外电国际贸易有限公司", "date": "2026-03-17", "industry": "其他", "type": "校招"},
+  {"company": "国瓷材料", "date": "2026-03-17", "industry": "制造业", "type": "校招"},
+  {"company": "国家电网有限公司", "date": "2026-09-15", "industry": "电力能源", "type": "校招"},
+  {"company": "中国华能集团有限公司", "date": "2026-09-20", "industry": "电力能源", "type": "校招"},
+  {"company": "中广核集团有限公司", "date": "2026-09-10", "industry": "电力能源", "type": "校招"},
+  {"company": "国家电力投资集团有限公司", "date": "2026-10-08", "industry": "电力能源", "type": "校招"},
+  {"company": "中国能源建设集团有限公司", "date": "2026-09-25", "industry": "电力能源", "type": "校招"},
+  {"company": "华电国际电力股份有限公司", "date": "2026-09-18", "industry": "电力能源", "type": "校招"},
+  {"company": "上海电气集团股份有限公司", "date": "2026-10-12", "industry": "制造业", "type": "校招"},
+  {"company": "中国核工业集团有限公司", "date": "2026-09-12", "industry": "电力能源", "type": "校招"},
+  {"company": "中核检修有限公司", "date": "2026-09-28", "industry": "电力能源", "type": "校招"},
+  {"company": "国家能源集团", "date": "2026-10-15", "industry": "电力能源", "type": "校招"},
+  {"company": "比亚迪股份有限公司", "date": "2026-09-08", "industry": "制造业", "type": "校招"},
+  {"company": "华为技术有限公司", "date": "2026-09-01", "industry": "互联网科技", "type": "校招"},
+  {"company": "百度在线网络技术（北京）有限公司", "date": "2026-09-05", "industry": "互联网科技", "type": "校招"},
+  {"company": "腾讯科技（深圳）有限公司", "date": "2026-09-01", "industry": "互联网科技", "type": "校招"},
+  {"company": "阿里巴巴集团", "date": "2026-09-02", "industry": "互联网科技", "type": "校招"},
+  {"company": "中国工商银行总行", "date": "2026-09-10", "industry": "金融证券", "type": "校招"},
+  {"company": "中国建设银行总行", "date": "2026-09-10", "industry": "金融证券", "type": "校招"},
+  {"company": "中国农业银行总行", "date": "2026-09-10", "industry": "金融证券", "type": "校招"},
+  {"company": "中国交通建设集团有限公司", "date": "2026-09-20", "industry": "建筑施工", "type": "校招"},
+  {"company": "中铁上海工程局集团有限公司", "date": "2026-09-22", "industry": "建筑施工", "type": "校招"},
+  {"company": "上海建工集团股份有限公司", "date": "2026-10-10", "industry": "建筑施工", "type": "校招"},
+  {"company": "中国电信股份有限公司上海分公司", "date": "2026-09-16", "industry": "互联网科技", "type": "校招"},
+  {"company": "中国联合网络通信有限公司上海市分公司", "date": "2026-09-16", "industry": "互联网科技", "type": "校招"},
+  {"company": "远景能源有限公司", "date": "2026-09-15", "industry": "电力能源", "type": "校招"},
+  {"company": "金风科技股份有限公司", "date": "2026-10-05", "industry": "制造业", "type": "校招"},
+  {"company": "隆基绿能科技股份有限公司", "date": "2026-09-08", "industry": "制造业", "type": "校招"},
+  {"company": "晶科能源股份有限公司", "date": "2026-09-18", "industry": "制造业", "type": "校招"},
+  {"company": "宁德时代新能源科技股份有限公司", "date": "2026-09-05", "industry": "制造业", "type": "校招"},
+  {"company": "特变电工股份有限公司", "date": "2026-10-08", "industry": "制造业", "type": "校招"},
+  {"company": "上海电力设计院有限公司", "date": "2026-09-25", "industry": "电力能源", "type": "校招"},
+  {"company": "华东师范大学", "date": "2026-09-20", "industry": "教育", "type": "校招"},
+  {"company": "上海理工大学", "date": "2026-10-06", "industry": "教育", "type": "校招"}
+];
+
+DATA.sort(function(a, b) { return b.date.localeCompare(a.date); });
+
+var logoClasses = {
+  '电力能源': 'logo-energy',
+  '金融证券': 'logo-finance',
+  '互联网科技': 'logo-tech',
+  '制造业': 'logo-manufacture',
+  '建筑施工': 'logo-construction',
+  '教育': 'logo-education',
+  '其他': 'logo-other'
+};
+
+function getLogo(company, industry) {
+  var c = company.charCodeAt(0) % 7;
+  var cls = logoClasses[industry] || 'logo-other';
+  return '<div class="company-logo ' + cls + '">' + company.charAt(0) + '</div>';
+}
+
+function formatDate(d) {
+  return d;
+}
+
+function renderCards() {
+  var search = (document.getElementById('searchInput').value || '').toLowerCase();
+  var industryFilter = document.getElementById('industryFilter').value;
+  var typeFilter = document.getElementById('typeFilter').value;
+
+  var filtered = DATA.filter(function(item) {
+    if (search && item.company.toLowerCase().indexOf(search) === -1) return false;
+    if (industryFilter && item.industry !== industryFilter) return false;
+    if (typeFilter && item.type !== typeFilter) return false;
+    return true;
+  });
+
+  var container = document.getElementById('cardsContainer');
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty-state"><p>😶 没有找到匹配的岗位，试试调整筛选条件</p></div>';
+  } else {
+    container.innerHTML = filtered.map(function(item) {
+      return '<div class="job-card">' +
+        getLogo(item.company, item.industry) +
+        '<div class="card-info">' +
+          '<div class="card-company" title="' + item.company + '">' + item.company + '</div>' +
+          '<div class="card-meta">' + formatDate(item.date) + '</div>' +
+        '</div>' +
+        '<div class="card-tags">' +
+          '<span class="tag tag-industry">' + item.industry + '</span>' +
+          '<span class="tag tag-type">' + item.type + '</span>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  document.getElementById('resultCount').textContent = '共 ' + filtered.length + ' 条';
+  updateStats();
+}
+
+function updateStats() {
+  document.getElementById('totalCount').textContent = DATA.length;
+  document.getElementById('energyCount').textContent = DATA.filter(function(i){return i.industry==='电力能源'}).length;
+  document.getElementById('financeCount').textContent = DATA.filter(function(i){return i.industry==='金融证券'}).length;
+  document.getElementById('techCount').textContent = DATA.filter(function(i){return i.industry==='互联网科技'}).length;
+}
+
+function clearFilters() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('industryFilter').value = '';
+  document.getElementById('typeFilter').value = '';
+  renderCards();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderCards();
+});
+</script>
+
+</body>
+</html>
