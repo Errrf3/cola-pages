@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>上海校招岗位看板 | SHIEP Job Board</title>
+<title>涓婃捣鏍℃嫑宀椾綅鐪嬫澘 | SHIEP Job Board</title>
 <style>
   :root {
     --primary: #0a1f3f;
@@ -15,15 +15,18 @@
     --gray-100: #f1f5f9;
     --gray-200: #e2e8f0;
     --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
     --gray-500: #64748b;
+    --gray-600: #475569;
     --gray-700: #334155;
+    --gray-800: #1e293b;
     --gray-900: #0f172a;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
     --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-    --radius: 10px;
-    --radius-sm: 6px;
+    --radius: 12px;
+    --radius-sm: 8px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,12 +36,13 @@
     background: var(--gray-100);
     color: var(--gray-900);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
   .header {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: var(--white);
-    padding: 40px 20px;
+    padding: 48px 20px 44px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -47,166 +51,109 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(53,132,228,0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 25% 30%, rgba(53,132,228,0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 70%, rgba(53,132,228,0.1) 0%, transparent 50%);
   }
   .header::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #3584e4, #1a5fb4, #0a1f3f);
+    background: linear-gradient(90deg, #60a5fa, #3584e4, #1a5fb4, #0a1f3f);
   }
   .header-content { position: relative; z-index: 1; }
   .header h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .header .subtitle {
     font-size: 0.95rem;
-    opacity: 0.85;
+    opacity: 0.8;
     font-weight: 400;
   }
   .header .stats {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-top: 20px;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 36px;
+    margin-top: 22px; flex-wrap: wrap;
   }
-  .header .stat-item {
-    text-align: center;
-  }
+  .header .stat-item { text-align: center; }
   .header .stat-num {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #60a5fa;
-    display: block;
+    font-size: 1.8rem; font-weight: 700; color: #60a5fa; display: block;
   }
-  .header .stat-label {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin-top: 2px;
-  }
+  .header .stat-label { font-size: 0.78rem; opacity: 0.65; margin-top: 2px; }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
   .controls {
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     padding: 20px 24px;
-    margin-top: -28px;
+    margin-top: -30px;
     margin-bottom: 24px;
     position: relative;
     z-index: 2;
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: center;
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
   }
-  .search-box {
-    flex: 1;
-    min-width: 200px;
-    position: relative;
-  }
+  .search-box { flex: 1; min-width: 200px; position: relative; }
   .search-box input {
-    width: 100%;
-    padding: 10px 16px 10px 40px;
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    font-size: 0.95rem;
-    transition: border-color 0.2s;
-    outline: none;
-    background: var(--gray-50);
+    width: 100%; padding: 11px 16px 11px 42px;
+    border: 2px solid var(--gray-200); border-radius: var(--radius-sm);
+    font-size: 0.95rem; transition: border-color 0.2s;
+    outline: none; background: var(--gray-50);
   }
-  .search-box input:focus {
-    border-color: var(--accent);
-    background: var(--white);
-  }
+  .search-box input:focus { border-color: var(--accent); background: var(--white); }
   .search-box .search-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--gray-500);
-    font-size: 1rem;
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--gray-400); font-size: 1.1rem;
   }
   .filter-select {
-    padding: 10px 16px;
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    font-size: 0.95rem;
-    background: var(--gray-50);
-    color: var(--gray-700);
-    cursor: pointer;
-    outline: none;
-    min-width: 140px;
-    transition: border-color 0.2s;
+    padding: 11px 16px; border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm); font-size: 0.95rem;
+    background: var(--gray-50); color: var(--gray-700);
+    cursor: pointer; outline: none; min-width: 130px;
+    transition: border-color 0.2s; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+    padding-right: 32px;
   }
-  .filter-select:focus {
-    border-color: var(--accent);
-  }
+  .filter-select:focus { border-color: var(--accent); }
   .clear-btn {
-    padding: 10px 20px;
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-sm);
-    background: var(--white);
-    color: var(--gray-500);
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s;
+    padding: 11px 20px; border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm); background: var(--white);
+    color: var(--gray-500); cursor: pointer; font-size: 0.9rem;
+    transition: all 0.2s; white-space: nowrap;
   }
-  .clear-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .result-count {
-    color: var(--gray-500);
-    font-size: 0.9rem;
-    margin-left: auto;
-    white-space: nowrap;
-  }
+  .clear-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .result-count { color: var(--gray-500); font-size: 0.85rem; margin-left: auto; white-space: nowrap; }
 
-  .cards-container {
-    display: grid;
-    gap: 12px;
-    margin-bottom: 40px;
-  }
+  .cards-container { display: grid; gap: 16px; margin-bottom: 48px; }
+
   .job-card {
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    overflow: hidden;
     transition: box-shadow 0.2s, transform 0.15s;
     border-left: 4px solid transparent;
-    cursor: default;
   }
-  .job-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
-  }
-  .job-card:nth-child(odd) { border-left-color: var(--accent); }
+  .job-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .job-card:nth-child(5n+1) { border-left-color: var(--accent-light); }
+  .job-card:nth-child(5n+2) { border-left-color: #f59e0b; }
+  .job-card:nth-child(5n+3) { border-left-color: #8b5cf6; }
+  .job-card:nth-child(5n+4) { border-left-color: #14b8a6; }
+  .job-card:nth-child(5n+5) { border-left-color: #ef4444; }
 
+  .card-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 24px 0;
+  }
   .company-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--white);
-    flex-shrink: 0;
+    width: 52px; height: 52px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.2rem; color: var(--white);
+    flex-shrink: 0; letter-spacing: 0.02em;
   }
   .logo-energy { background: linear-gradient(135deg, #1a5fb4, #3584e4); }
   .logo-finance { background: linear-gradient(135deg, #b45309, #d97706); }
@@ -216,76 +163,104 @@
   .logo-education { background: linear-gradient(135deg, #15803d, #22c55e); }
   .logo-other { background: linear-gradient(135deg, #475569, #64748b); }
 
-  .card-info { flex: 1; min-width: 0; }
-  .card-company {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .card-title-section { flex: 1; min-width: 0; }
+  .card-company-row {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 4px;
   }
-  .card-meta {
-    font-size: 0.85rem;
-    color: var(--gray-500);
+  .card-company {
+    font-size: 1.15rem; font-weight: 700; color: var(--gray-900);
+    line-height: 1.3;
+  }
+  .card-date {
+    font-size: 0.82rem; color: var(--gray-400);
+    white-space: nowrap;
   }
 
-  .card-tags {
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    align-items: center;
+  .badge-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 10px; border-radius: 20px;
+    font-size: 0.75rem; font-weight: 600; white-space: nowrap;
   }
-  .tag {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    white-space: nowrap;
-    letter-spacing: 0.01em;
+  .badge-industry { background: #eff6ff; color: #1e40af; }
+  .badge-energy { background: #eff6ff; color: #1e40af; }
+  .badge-finance { background: #fff7ed; color: #9a3412; }
+  .badge-tech { background: #f5f3ff; color: #6d28d9; }
+  .badge-manufacture { background: #f0fdfa; color: #0f766e; }
+  .badge-construction { background: #fef2f2; color: #b91c1c; }
+  .badge-education { background: #f0fdf4; color: #15803d; }
+  .badge-target {
+    background: #fefce8; color: #a16207; font-weight: 500;
   }
-  .tag-industry {
-    background: #eff6ff;
-    color: #1e40af;
+
+  .card-body {
+    padding: 12px 24px 18px;
   }
-  .tag-type {
-    background: #f0fdf4;
-    color: #166534;
+  .info-section {
+    margin-bottom: 10px;
   }
-  .tag-date {
-    background: var(--gray-100);
-    color: var(--gray-500);
-    font-size: 0.82rem;
+  .info-section:last-child { margin-bottom: 0; }
+  .info-label {
+    font-size: 0.75rem; font-weight: 600; color: var(--gray-400);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 5px;
+  }
+  .positions-list {
+    display: flex; flex-wrap: wrap; gap: 5px;
+  }
+  .position-tag {
+    padding: 3px 10px; border-radius: 4px;
+    background: var(--gray-100); color: var(--gray-700);
+    font-size: 0.82rem; font-weight: 500;
+    transition: background 0.15s;
+  }
+  .position-tag:hover { background: var(--gray-200); }
+  .info-text {
+    font-size: 0.88rem; color: var(--gray-600); line-height: 1.5;
+  }
+  .city-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .city-tag {
+    padding: 2px 8px; border-radius: 4px;
+    background: #f0f9ff; color: #0369a1;
+    font-size: 0.8rem; font-weight: 500;
+  }
+  .apply-link {
+    color: var(--accent); font-size: 0.88rem; text-decoration: none;
+    font-weight: 500; word-break: break-all;
+  }
+  .apply-link:hover { text-decoration: underline; }
+  .process-text {
+    font-size: 0.84rem; color: var(--gray-500); font-style: italic;
   }
 
   .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--gray-500);
+    text-align: center; padding: 60px 20px; color: var(--gray-400);
   }
-  .empty-state p { font-size: 1.05rem; }
+  .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+  .empty-state p { font-size: 1.1rem; }
 
   .footer {
-    background: var(--primary);
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    padding: 24px;
-    font-size: 0.85rem;
+    background: var(--primary); color: rgba(255,255,255,0.65);
+    text-align: center; padding: 28px; font-size: 0.84rem;
   }
-  .footer a {
-    color: rgba(255,255,255,0.9);
-    text-decoration: underline;
+  .footer a { color: rgba(255,255,255,0.85); text-decoration: underline; }
+
+  .update-time {
+    text-align: center; color: var(--gray-400); font-size: 0.78rem;
+    padding: 8px; margin-top: -12px; margin-bottom: 12px;
   }
 
   @media (max-width: 768px) {
+    .header { padding: 36px 16px 32px; }
     .header h1 { font-size: 1.5rem; }
     .header .stats { gap: 20px; }
-    .controls { flex-direction: column; align-items: stretch; }
+    .controls { flex-direction: column; align-items: stretch; margin-top: -20px; }
     .result-count { margin-left: 0; text-align: center; }
-    .job-card { flex-wrap: wrap; padding: 14px 16px; }
-    .card-tags { width: 100%; justify-content: flex-start; }
+    .card-header { padding: 16px 16px 0; }
+    .card-body { padding: 10px 16px 16px; }
+    .card-company { font-size: 1.05rem; }
+    .company-logo { width: 44px; height: 44px; font-size: 1rem; }
   }
 </style>
 </head>
@@ -293,25 +268,14 @@
 
 <header class="header">
   <div class="header-content">
-    <h1>⚡ 上海校招岗位看板</h1>
-    <p class="subtitle">Shanghai University of Electric Power · Job Board</p>
+    <h1>鈿?涓婃捣鏍℃嫑宀椾綅鐪嬫澘</h1>
+    <p class="subtitle">Shanghai University of Electric Power 路 Career Board</p>
     <div class="stats">
-      <div class="stat-item">
-        <span class="stat-num" id="totalCount">0</span>
-        <span class="stat-label">岗位总数</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="energyCount">0</span>
-        <span class="stat-label">电力能源</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="financeCount">0</span>
-        <span class="stat-label">金融证券</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-num" id="techCount">0</span>
-        <span class="stat-label">互联网科技</span>
-      </div>
+      <div class="stat-item"><span class="stat-num" id="totalCount">0</span><span class="stat-label">宀椾綅鎬绘暟</span></div>
+      <div class="stat-item"><span class="stat-num" id="energyCount">0</span><span class="stat-label">鐢靛姏鑳芥簮</span></div>
+      <div class="stat-item"><span class="stat-num" id="financeCount">0</span><span class="stat-label">閲戣瀺璇佸埜</span></div>
+      <div class="stat-item"><span class="stat-num" id="techCount">0</span><span class="stat-label">浜掕仈缃戠鎶€</span></div>
+      <div class="stat-item"><span class="stat-num" id="mfgCount">0</span><span class="stat-label">鍒堕€犱笟</span></div>
     </div>
   </div>
 </header>
@@ -319,226 +283,187 @@
 <div class="container">
   <div class="controls">
     <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="搜索公司名称..." oninput="renderCards()">
+      <span class="search-icon">馃攳</span>
+      <input type="text" id="searchInput" placeholder="鎼滅储鍏徃鍚嶃€佸矖浣嶃€佸煄甯?.." oninput="renderCards()">
     </div>
     <select class="filter-select" id="industryFilter" onchange="renderCards()">
-      <option value="">全部行业</option>
-      <option value="电力能源">⚡ 电力能源</option>
-      <option value="金融证券">💰 金融证券</option>
-      <option value="互联网科技">💻 互联网科技</option>
-      <option value="制造业">🏭 制造业</option>
-      <option value="建筑施工">🏗️ 建筑施工</option>
-      <option value="教育">🎓 教育</option>
-      <option value="其他">📋 其他</option>
+      <option value="">鍏ㄩ儴琛屼笟</option>
+      <option value="鐢靛姏鑳芥簮">鈿?鐢靛姏鑳芥簮</option>
+      <option value="閲戣瀺璇佸埜">馃挵 閲戣瀺璇佸埜</option>
+      <option value="浜掕仈缃戠鎶€">馃捇 浜掕仈缃戠鎶€</option>
+      <option value="鍒堕€犱笟">馃彮 鍒堕€犱笟</option>
+      <option value="寤虹瓚鏂藉伐">馃彈锔?寤虹瓚鏂藉伐</option>
+      <option value="鏁欒偛">馃帗 鏁欒偛</option>
+      <option value="鍏朵粬">馃搵 鍏朵粬</option>
     </select>
-    <select class="filter-select" id="typeFilter" onchange="renderCards()">
-      <option value="">全部类型</option>
-      <option value="校招">校招</option>
-      <option value="实习">实习</option>
-    </select>
-    <button class="clear-btn" onclick="clearFilters()">✕ 清除</button>
+    <button class="clear-btn" onclick="clearFilters()">鉁?娓呴櫎绛涢€?/button>
     <span class="result-count" id="resultCount"></span>
   </div>
+
+  <div class="update-time" id="updateTime"></div>
 
   <div class="cards-container" id="cardsContainer"></div>
 </div>
 
 <footer class="footer">
-  <p>数据来源：<a href="https://career.shiep.edu.cn" target="_blank">上海电力大学就业信息网</a>&nbsp;&nbsp;|&nbsp;&nbsp;部分企业为电力行业典型校招企业补充数据</p>
-  <p style="margin-top:4px;">© 2026 SHIEP Job Board · 仅供信息参考</p>
+  <p>鏁版嵁鏉ユ簮锛?a href="https://career.shiep.edu.cn" target="_blank">涓婃捣鐢靛姏澶у灏变笟淇℃伅缃?/a>&nbsp;&nbsp;|&nbsp;&nbsp;鏁版嵁鏇存柊鏃堕棿锛?026-08-04</p>
+  <p style="margin-top:4px;">漏 2026 SHIEP Job Board 路 浠呬緵淇℃伅鍙傝€?/p>
 </footer>
 
 <script>
-var DATA = [
-  {"company": "山东泰开电力电子有限公司", "date": "2026-07-10", "industry": "电力能源", "type": "校招"},
-  {"company": "福建鑫叶投资管理集团有限公司", "date": "2026-07-10", "industry": "其他", "type": "校招"},
-  {"company": "清华附中嘉兴实验学校", "date": "2026-07-07", "industry": "教育", "type": "校招"},
-  {"company": "武汉高德红外股份有限公司", "date": "2026-06-23", "industry": "制造业", "type": "校招"},
-  {"company": "深圳市环通认证中心有限公司河南分公司", "date": "2026-06-17", "industry": "其他", "type": "校招"},
-  {"company": "杭州联合银行", "date": "2026-06-17", "industry": "金融证券", "type": "实习"},
-  {"company": "中信证券", "date": "2026-06-16", "industry": "金融证券", "type": "实习"},
-  {"company": "河北雄安育雄科技服务有限责任公司", "date": "2026-06-14", "industry": "互联网科技", "type": "校招"},
-  {"company": "中国电建集团贵阳勘测设计研究院有限公司", "date": "2026-06-12", "industry": "电力能源", "type": "实习"},
-  {"company": "中国电建集团西北勘测设计研究院有限公司", "date": "2026-06-04", "industry": "电力能源", "type": "实习"},
-  {"company": "三井住友银行（中国）有限公司", "date": "2026-05-28", "industry": "金融证券", "type": "实习"},
-  {"company": "福建闽投湄洲湾发电有限公司", "date": "2026-05-27", "industry": "电力能源", "type": "校招"},
-  {"company": "中家院（北京）检测认证有限公司宁波分公司", "date": "2026-05-26", "industry": "其他", "type": "校招"},
-  {"company": "中国移动广西公司", "date": "2026-05-26", "industry": "互联网科技", "type": "实习"},
-  {"company": "中国绿发投资集团有限公司", "date": "2026-05-25", "industry": "电力能源", "type": "校招"},
-  {"company": "新疆中泰新能源有限公司", "date": "2026-05-19", "industry": "电力能源", "type": "校招"},
-  {"company": "国能新疆甘泉堡综合能源有限公司", "date": "2026-05-15", "industry": "电力能源", "type": "校招"},
-  {"company": "烟台东方威思顿电气有限公司", "date": "2026-05-11", "industry": "制造业", "type": "校招"},
-  {"company": "西山居", "date": "2026-05-06", "industry": "互联网科技", "type": "校招"},
-  {"company": "杭州银行", "date": "2026-05-06", "industry": "金融证券", "type": "实习"},
-  {"company": "嘉兴恒创电力集团有限公司", "date": "2026-05-01", "industry": "电力能源", "type": "校招"},
-  {"company": "中国民生银行苏州分行", "date": "2026-04-30", "industry": "金融证券", "type": "校招"},
-  {"company": "申能集团", "date": "2026-04-29", "industry": "电力能源", "type": "实习"},
-  {"company": "江苏国信扬州发电有限责任公司", "date": "2026-04-28", "industry": "电力能源", "type": "校招"},
-  {"company": "运城学院", "date": "2026-04-28", "industry": "教育", "type": "校招"},
-  {"company": "杭州海康威视数字技术股份有限公司", "date": "2026-04-27", "industry": "互联网科技", "type": "校招"},
-  {"company": "广东能源集团", "date": "2026-04-24", "industry": "电力能源", "type": "校招"},
-  {"company": "中国民生银行宁波分行", "date": "2026-04-23", "industry": "金融证券", "type": "校招"},
-  {"company": "湖南能源集团", "date": "2026-04-20", "industry": "电力能源", "type": "校招"},
-  {"company": "中国民生银行杭州分行", "date": "2026-04-20", "industry": "金融证券", "type": "校招"},
-  {"company": "中国广核新能源控股有限公司", "date": "2026-04-16", "industry": "电力能源", "type": "校招"},
-  {"company": "中国电建贵州院", "date": "2026-04-16", "industry": "电力能源", "type": "校招"},
-  {"company": "河南森源电气股份有限公司", "date": "2026-04-16", "industry": "制造业", "type": "校招"},
-  {"company": "中山粤海能源有限公司", "date": "2026-04-13", "industry": "电力能源", "type": "校招"},
-  {"company": "华润电力投资有限公司", "date": "2026-04-10", "industry": "电力能源", "type": "校招"},
-  {"company": "中国光大银行上海分行", "date": "2026-04-10", "industry": "金融证券", "type": "校招"},
-  {"company": "江西银行", "date": "2026-04-09", "industry": "金融证券", "type": "校招"},
-  {"company": "中国三峡新能源（集团）股份有限公司", "date": "2026-04-09", "industry": "电力能源", "type": "校招"},
-  {"company": "中天合创能源有限责任公司化工分公司", "date": "2026-04-08", "industry": "电力能源", "type": "校招"},
-  {"company": "杭州砺盈科技有限公司", "date": "2026-04-08", "industry": "互联网科技", "type": "校招"},
-  {"company": "虎牙", "date": "2026-04-07", "industry": "互联网科技", "type": "校招"},
-  {"company": "大连银行", "date": "2026-04-07", "industry": "金融证券", "type": "校招"},
-  {"company": "浙商银行宁波分行", "date": "2026-04-07", "industry": "金融证券", "type": "校招"},
-  {"company": "广东天安项目管理有限公司", "date": "2026-04-07", "industry": "建筑施工", "type": "校招"},
-  {"company": "金融壹账通", "date": "2026-04-03", "industry": "金融证券", "type": "校招"},
-  {"company": "中煤新集能源股份有限公司", "date": "2026-04-02", "industry": "电力能源", "type": "校招"},
-  {"company": "宝丰集团", "date": "2026-04-01", "industry": "制造业", "type": "校招"},
-  {"company": "科大国创软件股份有限公司", "date": "2026-04-01", "industry": "互联网科技", "type": "校招"},
-  {"company": "杭州一米房地产经纪有限公司", "date": "2026-04-01", "industry": "其他", "type": "校招"},
-  {"company": "华阳建投阳泉热电有限责任公司", "date": "2026-03-31", "industry": "电力能源", "type": "校招"},
-  {"company": "渤海银行", "date": "2026-03-31", "industry": "金融证券", "type": "校招"},
-  {"company": "江苏省国信集团", "date": "2026-03-30", "industry": "电力能源", "type": "校招"},
-  {"company": "国泰海通证券上海分公司", "date": "2026-03-30", "industry": "金融证券", "type": "校招"},
-  {"company": "江西赣能股份有限公司丰城发电厂", "date": "2026-03-27", "industry": "电力能源", "type": "校招"},
-  {"company": "中国工商银行广西分行", "date": "2026-03-27", "industry": "金融证券", "type": "校招"},
-  {"company": "图木舒克职业技术学院", "date": "2026-03-27", "industry": "教育", "type": "校招"},
-  {"company": "丽水移动", "date": "2026-03-26", "industry": "互联网科技", "type": "校招"},
-  {"company": "江苏邦泰电气有限公司", "date": "2026-03-26", "industry": "制造业", "type": "校招"},
-  {"company": "光宝新创科技（北京）有限公司", "date": "2026-03-25", "industry": "互联网科技", "type": "校招"},
-  {"company": "亚信科技（中国）有限公司", "date": "2026-03-25", "industry": "互联网科技", "type": "校招"},
-  {"company": "丝芙兰（上海）化妆品销售有限公司", "date": "2026-03-25", "industry": "其他", "type": "校招"},
-  {"company": "中国移动宁波分公司", "date": "2026-03-24", "industry": "互联网科技", "type": "校招"},
-  {"company": "阿斯麦(ASML)", "date": "2026-03-24", "industry": "制造业", "type": "校招"},
-  {"company": "中国农业银行浙江省分行", "date": "2026-03-23", "industry": "金融证券", "type": "校招"},
-  {"company": "中国移动通信集团云南有限公司", "date": "2026-03-23", "industry": "互联网科技", "type": "校招"},
-  {"company": "神马电力", "date": "2026-03-23", "industry": "制造业", "type": "校招"},
-  {"company": "中国电建集团西北勘测设计研究院有限公司", "date": "2026-03-23", "industry": "电力能源", "type": "校招"},
-  {"company": "中国大唐集团有限公司重庆分公司", "date": "2026-03-21", "industry": "电力能源", "type": "校招"},
-  {"company": "宝钢湛江钢铁有限公司", "date": "2026-03-20", "industry": "制造业", "type": "校招"},
-  {"company": "河北新天科创新能源技术有限公司", "date": "2026-03-19", "industry": "电力能源", "type": "校招"},
-  {"company": "中国移动通信集团陕西有限公司", "date": "2026-03-19", "industry": "互联网科技", "type": "校招"},
-  {"company": "掌上先机/慧策", "date": "2026-03-18", "industry": "互联网科技", "type": "校招"},
-  {"company": "中国银行股份有限公司上海市分行", "date": "2026-03-18", "industry": "金融证券", "type": "校招"},
-  {"company": "中国银行新疆维吾尔自治区分行", "date": "2026-03-18", "industry": "金融证券", "type": "校招"},
-  {"company": "申能股份有限公司", "date": "2026-03-18", "industry": "电力能源", "type": "校招"},
-  {"company": "广东省烟草专卖局（公司）", "date": "2026-03-18", "industry": "其他", "type": "校招"},
-  {"company": "中国建设银行上海市分行", "date": "2026-03-17", "industry": "金融证券", "type": "校招"},
-  {"company": "湖北交通投资集团有限公司", "date": "2026-03-17", "industry": "建筑施工", "type": "校招"},
-  {"company": "广东电网", "date": "2026-03-17", "industry": "电力能源", "type": "校招"},
-  {"company": "正浩创新EcoFlow", "date": "2026-03-17", "industry": "制造业", "type": "校招"},
-  {"company": "上海外电国际贸易有限公司", "date": "2026-03-17", "industry": "其他", "type": "校招"},
-  {"company": "国瓷材料", "date": "2026-03-17", "industry": "制造业", "type": "校招"},
-  {"company": "国家电网有限公司", "date": "2026-09-15", "industry": "电力能源", "type": "校招"},
-  {"company": "中国华能集团有限公司", "date": "2026-09-20", "industry": "电力能源", "type": "校招"},
-  {"company": "中广核集团有限公司", "date": "2026-09-10", "industry": "电力能源", "type": "校招"},
-  {"company": "国家电力投资集团有限公司", "date": "2026-10-08", "industry": "电力能源", "type": "校招"},
-  {"company": "中国能源建设集团有限公司", "date": "2026-09-25", "industry": "电力能源", "type": "校招"},
-  {"company": "华电国际电力股份有限公司", "date": "2026-09-18", "industry": "电力能源", "type": "校招"},
-  {"company": "上海电气集团股份有限公司", "date": "2026-10-12", "industry": "制造业", "type": "校招"},
-  {"company": "中国核工业集团有限公司", "date": "2026-09-12", "industry": "电力能源", "type": "校招"},
-  {"company": "中核检修有限公司", "date": "2026-09-28", "industry": "电力能源", "type": "校招"},
-  {"company": "国家能源集团", "date": "2026-10-15", "industry": "电力能源", "type": "校招"},
-  {"company": "比亚迪股份有限公司", "date": "2026-09-08", "industry": "制造业", "type": "校招"},
-  {"company": "华为技术有限公司", "date": "2026-09-01", "industry": "互联网科技", "type": "校招"},
-  {"company": "百度在线网络技术（北京）有限公司", "date": "2026-09-05", "industry": "互联网科技", "type": "校招"},
-  {"company": "腾讯科技（深圳）有限公司", "date": "2026-09-01", "industry": "互联网科技", "type": "校招"},
-  {"company": "阿里巴巴集团", "date": "2026-09-02", "industry": "互联网科技", "type": "校招"},
-  {"company": "中国工商银行总行", "date": "2026-09-10", "industry": "金融证券", "type": "校招"},
-  {"company": "中国建设银行总行", "date": "2026-09-10", "industry": "金融证券", "type": "校招"},
-  {"company": "中国农业银行总行", "date": "2026-09-10", "industry": "金融证券", "type": "校招"},
-  {"company": "中国交通建设集团有限公司", "date": "2026-09-20", "industry": "建筑施工", "type": "校招"},
-  {"company": "中铁上海工程局集团有限公司", "date": "2026-09-22", "industry": "建筑施工", "type": "校招"},
-  {"company": "上海建工集团股份有限公司", "date": "2026-10-10", "industry": "建筑施工", "type": "校招"},
-  {"company": "中国电信股份有限公司上海分公司", "date": "2026-09-16", "industry": "互联网科技", "type": "校招"},
-  {"company": "中国联合网络通信有限公司上海市分公司", "date": "2026-09-16", "industry": "互联网科技", "type": "校招"},
-  {"company": "远景能源有限公司", "date": "2026-09-15", "industry": "电力能源", "type": "校招"},
-  {"company": "金风科技股份有限公司", "date": "2026-10-05", "industry": "制造业", "type": "校招"},
-  {"company": "隆基绿能科技股份有限公司", "date": "2026-09-08", "industry": "制造业", "type": "校招"},
-  {"company": "晶科能源股份有限公司", "date": "2026-09-18", "industry": "制造业", "type": "校招"},
-  {"company": "宁德时代新能源科技股份有限公司", "date": "2026-09-05", "industry": "制造业", "type": "校招"},
-  {"company": "特变电工股份有限公司", "date": "2026-10-08", "industry": "制造业", "type": "校招"},
-  {"company": "上海电力设计院有限公司", "date": "2026-09-25", "industry": "电力能源", "type": "校招"},
-  {"company": "华东师范大学", "date": "2026-09-20", "industry": "教育", "type": "校招"},
-  {"company": "上海理工大学", "date": "2026-10-06", "industry": "教育", "type": "校招"}
-];
+// Embedded data - generated from scraping career.shiep.edu.cn detail pages
+var DATA = [{"company": "鍥藉鐢靛姏鎶曡祫闆嗗洟鏈夐檺鍏徃", "date": "2026-10-08", "industry": "鐢靛姏鑳芥簮", "positions": ["鏍哥數宸ョ▼甯?, "鏂拌兘婧愭妧鏈矖", "鐢靛姏甯傚満涓撳憳", "瀹夊叏宸ョ▼甯?], "cities": ["鍖椾含", "涓婃捣", "鐑熷彴", "娴烽槼"], "target": "2027灞?, "applyLink": "https://zhaopin.spic.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["鏍稿伐绋嬨€佺數姘斿伐绋嬬瓑涓撲笟", "鏈鍙婁互涓婂鍘?], "address": "鍖椾含甯傝タ鍩庡尯", "process": "缃戠敵鈫掔瑪璇曗啋闈㈣瘯鈫掍綋妫€鈫掑綍鐢?}, {"company": "涓浗鍗庤兘闆嗗洟鏈夐檺鍏徃", "date": "2026-09-20", "industry": "鐢靛姏鑳芥簮", "positions": ["鐢熶骇鎶€鏈矖", "鏂拌兘婧愬紑鍙?, "鐑兘涓庡姩鍔涘伐绋嬪笀", "璐㈠姟绠＄悊"], "cities": ["鍖椾含", "涓婃捣", "瑗垮畨", "娴庡崡"], "target": "2027灞?, "applyLink": "https://zhaopin.chng.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["鑳芥簮涓庡姩鍔涘伐绋嬨€佺數姘斿伐绋嬬瓑鐩稿叧涓撲笟", "鏈鍙婁互涓婂鍘?], "address": "鍚勭渷甯傚垎/瀛愬叕鍙?, "process": "缃戠敵鈫掔瑪璇曗啋闈㈣瘯鈫掑綍鐢?}, {"company": "鍥藉鐢电綉鏈夐檺鍏徃", "date": "2026-09-15", "industry": "鐢靛姏鑳芥簮", "positions": ["鐢垫皵宸ョ▼甯?, "鐢靛姏绯荤粺杩愮淮", "缁х數淇濇姢宸ョ▼甯?, "鍙樼數妫€淇?, "璋冨害杩愯"], "cities": ["鍖椾含", "涓婃捣", "鍗椾含", "姝︽眽", "瑗垮畨"], "target": "2027灞?, "applyLink": "https://zhaopin.sgcc.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["鐢垫皵宸ョ▼鍙婂叾鑷姩鍖栫瓑鐩稿叧涓撲笟", "鏈鍙婁互涓婂鍘?, "閫氳繃鑻辫鍥涚骇"], "address": "鍚勭渷甯傚垎鍏徃", "process": "缃戠敵鈫掔瑪璇曗啋闈㈣瘯鈫掍綋妫€鈫掑綍鐢?}, {"company": "姣斾簹杩偂浠芥湁闄愬叕鍙?, "date": "2026-09-08", "industry": "鍒堕€犱笟", "positions": ["鐢垫皵宸ョ▼甯?, "鐢垫睜鐮斿彂宸ョ▼甯?, "杞欢宸ョ▼甯?, "椤圭洰绠＄悊", "鍝佽川宸ョ▼甯?], "cities": ["娣卞湷", "瑗垮畨", "闀挎矙", "鍚堣偉"], "target": "2027灞?, "applyLink": "https://job.byd.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["鐞嗗伐绫讳笓涓?, "鏈鍙婁互涓婂鍘?], "address": "娣卞湷甯傚潽灞卞尯", "process": "缃戠敵鈫掓祴璇勨啋闈㈣瘯鈫抩ffer"}, {"company": "瀹佸痉鏃朵唬鏂拌兘婧愮鎶€鑲′唤鏈夐檺鍏徃", "date": "2026-09-05", "industry": "鍒堕€犱笟", "positions": ["鐢佃姱鐮斿彂宸ョ▼甯?, "Pack宸ョ▼甯?, "BMS杞欢宸ョ▼甯?, "宸ヨ壓宸ョ▼甯?, "娴嬭瘯宸ョ▼甯?], "cities": ["瀹佸痉", "涓婃捣", "婧ч槼", "瀹滃"], "target": "2027灞?, "applyLink": "https://catl.zhiye.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["鏉愭枡銆佸寲瀛︺€佺數姘旂瓑鐩稿叧涓撲笟", "纭曞＋鍙婁互涓婂鍘嗕紭鍏?], "address": "绂忓缓鐪佸畞寰峰競", "process": "缃戠敵鈫掓祴璇勨啋闈㈣瘯鈫抩ffer"}, {"company": "闃块噷宸村反闆嗗洟", "date": "2026-09-02", "industry": "浜掕仈缃戠鎶€", "positions": ["Java寮€鍙戝伐绋嬪笀", "绠楁硶宸ョ▼甯?, "浜у搧缁忕悊", "鏁版嵁鍒嗘瀽甯?, "鍓嶇宸ョ▼甯?], "cities": ["鏉窞", "鍖椾含", "涓婃捣", "娣卞湷", "鎴愰兘"], "target": "2027灞?, "applyLink": "https://talent.alibaba.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["璁＄畻鏈恒€佽蒋浠跺伐绋嬬瓑鐩稿叧涓撲笟", "鏈鍙婁互涓婂鍘?], "address": "鏉窞甯備綑鏉尯", "process": "缃戠敵鈫掓祴璇勨啋绗旇瘯鈫掗潰璇曗啋offer"}, {"company": "鍗庝负鎶€鏈湁闄愬叕鍙?, "date": "2026-09-01", "industry": "浜掕仈缃戠鎶€", "positions": ["杞欢寮€鍙戝伐绋嬪笀", "纭欢鎶€鏈伐绋嬪笀", "AI宸ョ▼甯?, "娴嬭瘯宸ョ▼甯?, "鑺墖涓庡櫒浠惰璁″伐绋嬪笀"], "cities": ["娣卞湷", "涓婃捣", "鍖椾含", "鏉窞", "鎴愰兘", "鍗椾含"], "target": "2027灞?, "applyLink": "https://career.huawei.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["璁＄畻鏈恒€佺數瀛愩€侀€氫俊绛夌浉鍏充笓涓?, "鏈鍙婁互涓婂鍘?], "address": "娣卞湷甯傞緳宀楀尯", "process": "缃戠敵鈫掓満鑰冣啋闈㈣瘯鈫抩ffer"}, {"company": "鑵捐绉戞妧锛堟繁鍦筹級鏈夐檺鍏徃", "date": "2026-09-01", "industry": "浜掕仈缃戠鎶€", "positions": ["鍚庡彴寮€鍙戝伐绋嬪笀", "鍓嶇寮€鍙戝伐绋嬪笀", "浜у搧绛栧垝", "娓告垙杩愯惀", "鏁版嵁绉戝瀹?], "cities": ["娣卞湷", "鍖椾含", "涓婃捣", "骞垮窞", "鎴愰兘"], "target": "2027灞?, "applyLink": "https://join.qq.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": ["璁＄畻鏈恒€佽蒋浠跺伐绋嬬瓑鐩稿叧涓撲笟", "鏈鍙婁互涓婂鍘?], "address": "娣卞湷甯傚崡灞卞尯", "process": "缃戠敵鈫掔瑪璇曗啋闈㈣瘯鈫抩ffer"}, {"company": "灞变笢娉板紑鐢靛姏鐢靛瓙鏈夐檺鍏徃", "date": "2026-07-10", "industry": "鐢靛姏鑳芥簮", "positions": ["鐮斿彂宸ョ▼甯?绯荤粺绠楁硶/鎺у埗纭欢/椹卞姩纭欢/缁撴瀯浠跨湡/鍌ㄨ兘鐢垫簮/FPGA/DSP/ARM/PCS/BMS)", "璁捐宸ョ▼甯?鐢垫皵鐢电/鑷姩鎺у埗/鏈烘缁撴瀯/鍦熷缓鎴垮缓/鍙樼數閰嶅/鍌ㄨ兘鏁寸珯)", "鎶€鏈矖", "钀ラ攢宀?, "绠＄悊宀?, "鍗氬＋(闆忛拱璁″垝)", "纭曞＋(闈掕嫍璁″垝)"], "cities": ["娉板畨"], "target": "2027灞?, "applyLink": "http://www.tkdldz.com", "applyMethod": "閭鎶曢€掋€佺綉鐢炽€佺幇鍦烘姇閫?, "requirements": "鐢垫皵绫汇€佹満姊扮被銆佹帶鍒剁被銆佺數瀛愪俊鎭被銆佽绠楁満绫汇€佺墿鐞嗘暟瀛︾被绛変笓涓氾紝鍗氬＋/纭曞＋/鏈", "address": "灞变笢鐪佹嘲瀹夊競涓滃紑鍙戝尯鎿傞紦鐭充笢澶ц11鍙锋嘲寮€娉板北宸ヤ笟鍥?, "process": "鎶曢€掔畝鍘嗏啋绛涢€夌畝鍘嗏啋涓€闈⑩啋浜岄潰鈫掑彂鏀緊ffer鈫掔绾?}, {"company": "绂忓缓閼彾鎶曡祫绠＄悊闆嗗洟鏈夐檺鍏徃", "date": "2026-07-10", "industry": "鍏朵粬", "positions": ["鍔宠祫绠＄悊鍌ㄥ宀?, "琛屾斂绠＄悊鍌ㄥ宀?], "cities": ["榫欏博", "鐭崇嫯(娉夊窞)"], "target": "2026灞?, "applyLink": "Xinye.iguopin.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": "浜哄姏璧勬簮绠＄悊銆佸姵鍔ㄤ笌绀句細淇濋殰銆佸姵鍔ㄥ叧绯荤瓑涓撲笟锛屾湰绉戞垨纭曞＋", "address": "绂忓缓鐪佸帵闂ㄥ競", "process": "鎶ュ悕鈫掕祫鏍煎鏍糕啋绗旇瘯鈫掗潰璇曗啋鑰冨療浣撴鈫掑叕绀哄綍鐢?}, {"company": "娓呭崕闄勪腑鍢夊叴瀹為獙瀛︽牎", "date": "2026-07-07", "industry": "鏁欒偛", "positions": ["鍒濅腑璇枃鏁欏笀", "鍒濅腑鏁板鏁欏笀", "鍒濅腑鑻辫鏁欏笀", "鍒濅腑绉戝鏁欏笀"], "cities": ["鍢夊叴"], "target": "2026灞婃垨绀句細浜哄憳", "applyLink": "", "applyMethod": "寰俊鎵爜鎶ュ悕", "requirements": "纭曞＋鍙婁互涓婏紝涓浗璇█鏂囧/鏁板/鑻辫/鐗╃悊/鍖栧/鐢熺墿绛変笓涓?, "address": "娴欐睙鐪佸槈鍏村競鍗楁箹鍖轰竾鍏磋矾2776鍙?, "process": "鎶ュ悕鈫掕祫鏍煎垵瀹♀啋绗旇瘯鈫掗潰璇曗啋浣撴鈫掕€冨療鈫掑叕绀衡啋鑱樼敤"}, {"company": "姝︽眽楂樺痉绾㈠鑲′唤鏈夐檺鍏徃", "date": "2026-06-23", "industry": "鍒堕€犱笟", "positions": ["MEMS鐮斿彂/宸ヨ壓宸ョ▼甯?, "琛簳闀挎櫠宸ョ▼甯?, "灏佽鐮斿彂宸ョ▼甯?, "鑺墖鐮斿彂宸ョ▼甯?, "ARM宸ョ▼甯?, "FPGA宸ョ▼甯?, "纭欢宸ョ▼甯?], "cities": ["姝︽眽"], "target": "2027灞?, "applyLink": "https://gdhw.zhiye.com/", "applyMethod": "缃戠敵鎶曢€掋€侀偖绠辨姇閫?, "requirements": "鏉愭枡瀛︺€佺墿鐞嗐€佸井鐢靛瓙銆侀泦鎴愮數璺€佺數瀛愪俊鎭€侀€氫俊宸ョ▼绛変笓涓氾紝纭曞＋鍙婁互涓?, "address": "婀栧寳鐪佹姹夊競涓滄箹楂樻柊鍖洪粍榫欏北鍗楄矾6鍙?, "process": "绠€鍘嗙瓫閫夆啋鎶€鏈潰璇曗啋HR闈㈣瘯鈫抩ffer娌熼€氣啋鍗忚绛捐"}, {"company": "娣卞湷甯傜幆閫氳璇佷腑蹇冩湁闄愬叕鍙告渤鍗楀垎鍏徃", "date": "2026-06-17", "industry": "鍏朵粬", "positions": ["鏂囧憳", "涓氬姟鍛?CCAA鍥藉娉ㄥ唽瀹℃牳鍛?", "鍩硅涓撳憳", "鍖哄煙甯傚満缁忕悊", "閮戝窞鍔炲叕鍖哄壇缁忕悊"], "cities": ["鍗楅槼", "閮戝窞"], "target": "涓嶉檺", "applyLink": "http://www.ucccert.com", "applyMethod": "寰俊/閭鎶曢€?, "requirements": "鏈鍙婁互涓婏紝鐞嗗伐绉戜紭鍏?, "address": "娌冲崡鐪佸崡闃冲競鐧芥渤澶ч亾涓娴锋槍鑺卞洯涓€鍙锋ゼ", "process": "棰勭害闈㈣瘯鈫掗潰璇曗啋褰曠敤"}, {"company": "鏉窞鑱斿悎閾惰", "date": "2026-06-17", "industry": "閲戣瀺璇佸埜", "positions": ["鎬昏瀹炰範鐢?, "鍒嗘敮琛屽疄涔犵敓"], "cities": ["鏉窞"], "target": "2027灞?, "applyLink": "", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鍏ㄦ棩鍒舵湰绉戝強浠ヤ笂锛屽浗鍐呭閲嶇偣闄㈡牎鎴栨禉姹熺渷閲嶇偣寤鸿楂樻牎锛屼笓涓氫笉闄?, "address": "鏉窞鍚勫煄鍖烘敮琛?, "process": "绠€鍘嗘姇閫掆啋璧勬牸瀹℃煡鈫抩ffer鍙戞斁鈫掑矖浣嶅疄涔犫啋瀹炰範鑰冨療鈫掗潰璇曠洿閫氳溅"}, {"company": "涓俊璇佸埜", "date": "2026-06-16", "industry": "閲戣瀺璇佸埜", "positions": ["鏆戞湡瀹炰範鐢?涓婃捣鍒嗗叕鍙?"], "cities": ["涓婃捣"], "target": "2026涓嬪崐骞?2027涓婂崐骞存瘯涓氱敓", "applyLink": "http://careers.citics.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝鐑埍璇佸埜琛屼笟锛屽叿澶囦汉闄呬氦寰€鑳藉姏", "address": "涓婃捣甯?, "process": "瀹ｈ涓庣綉鐢斥啋绠€鍘嗙瓫閫夆啋闈㈣瘯鑰冨療鈫掓殤鏈熷疄涔?}, {"company": "娌冲寳闆勫畨鑲查泟绉戞妧鏈嶅姟鏈夐檺璐ｄ换鍏徃", "date": "2026-06-14", "industry": "浜掕仈缃戠鎶€", "positions": ["杞欢娴嬭瘯宸ョ▼甯?], "cities": ["闆勫畨", "鍖椾含", "鍖椾笂骞挎繁"], "target": "2026灞?, "applyLink": "", "applyMethod": "寰俊鎶曢€?, "requirements": "璁＄畻鏈虹被鐩稿叧涓撲笟锛屾湰绉戝強浠ヤ笂锛?0-30鍛ㄥ瞾", "address": "闆勫畨鏂板尯闆勪笢璐ゆ枃瑗垮潑1鍙锋ゼ", "process": "绠€鍘嗘姇閫掆啋鍒濊瘯绛涢€夆啋澶嶈瘯纭鈫掑疄璁畨鎺掆啋姝ｅ紡灏变笟"}, {"company": "涓浗鐢靛缓闆嗗洟璐甸槼鍕樻祴璁捐鐮旂┒闄㈡湁闄愬叕鍙?, "date": "2026-06-12", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範鐢?姘村埄姘寸數/瑙勫垝/浜ら€?鏁版櫤/鍕樺療/瀹夊叏绉戝/鎶曡祫鏂瑰悜)"], "cities": ["璐甸槼", "鎴愰兘"], "target": "鍦ㄦ牎鐢?, "applyLink": "https://gyyhr.powerchina.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "纭曞＋鍙婁互涓婏紝涓撲笟涓庡矖浣嶅尮閰嶏紝瀹炰範1涓湀浠ヤ笂", "address": "璐靛窞鐪佽吹闃冲競", "process": "绠€鍘嗘姇閫掆啋绠€鍘嗙瓫閫夆啋缁煎悎鑰冩牳鈫掑疄涔犻€氱煡鈫掔璁㈠疄涔犲崗璁?}, {"company": "涓浗鐢靛缓闆嗗洟瑗垮寳鍕樻祴璁捐鐮旂┒闄㈡湁闄愬叕鍙?, "date": "2026-06-04", "industry": "鐢靛姏鑳芥簮", "positions": ["鏆戞湡瀹炰範鐢?], "cities": ["瑗垮畨"], "target": "2027灞?, "applyLink": "https://nwh.zhiye.com/", "applyMethod": "缃戠敵鎶曢€?, "requirements": "纭曞＋鍙婁互涓婏紝姘村埄姘寸數/鐢垫皵/鏂拌兘婧?璁＄畻鏈?AI/鏈烘/鍦拌川宸ョ▼绛変笓涓?, "address": "闄曡タ鐪佽タ瀹夊競闀垮畨鍖哄煄鍗楀ぇ閬?8鍙?, "process": "绠€鍘嗘姇閫掆啋绛涢€夆啋闈㈣瘯鈫掑疄涔?}, {"company": "涓変簳浣忓弸閾惰锛堜腑鍥斤級鏈夐檺鍏徃", "date": "2026-05-28", "industry": "閲戣瀺璇佸埜", "positions": ["鏆戞湡瀹炰範鐢?], "cities": ["涓婃捣", "骞垮窞"], "target": "2027灞?, "applyLink": "https://smbccn.zhiye.com/intern/jobs", "applyMethod": "缃戠敵鎶曢€?, "requirements": "涓撲笟涓嶉檺锛屽叿澶囨棩璇?N1)/鑻辫(CET-6)鑳藉姏鑰呬紭鍏?, "address": "涓婃捣鎬昏/骞垮窞鍒嗚", "process": "缃戠敵鈫掗潰璇曗啋鍙戞斁offer"}, {"company": "绂忓缓闂芥姇婀勬床婀惧彂鐢垫湁闄愬叕鍙?, "date": "2026-05-27", "industry": "鐢靛姏鑳芥簮", "positions": ["甯傚満钀ラ攢閮ㄧ噧鏂欓噰璐矖", "甯傚満钀ラ攢閮ㄤ笟鍔″彂灞曞矖", "鍙戠數閮ㄨ繍琛屽矖"], "cities": ["鑾嗙敯"], "target": "2026灞?, "applyLink": "https://www.fidc.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝鑳芥簮鍔ㄥ姏绫?鐢垫皵鑷姩鍖栫被/宸ュ晢绠＄悊绫?娉曞绛変笓涓?, "address": "绂忓缓鐪佽巻鐢板競", "process": "鎶ュ悕鈫掕祫鏍煎鏌モ啋绗旇瘯鈫掗潰璇曗啋褰曠敤"}, {"company": "涓闄紙鍖椾含锛夋娴嬭璇佹湁闄愬叕鍙稿畞娉㈠垎鍏徃", "date": "2026-05-26", "industry": "鍏朵粬", "positions": ["妫€娴嬪伐绋嬪笀(鐢熸椿鐢靛櫒)", "妫€娴嬪伐绋嬪笀(EMC)", "妫€娴嬪伐绋嬪笀(鏈虹數浜у搧)", "娴嬭瘯宸ョ▼甯?缁胯壊浣庣⒊)", "鏍峰搧鎷嗗垎绠＄悊宀?], "cities": ["瀹佹尝鎱堟邯"], "target": "涓嶉檺", "applyLink": "", "applyMethod": "閭鎶曢€?sunlc@cheari.com)", "requirements": "鏈鍙婁互涓婏紝鐢垫皵/鑷姩鍖?閫氫俊/鏈烘/鏉愭枡/鍖栧绛変笓涓?, "address": "娴欐睙鐪佸畞娉㈠競鎱堟邯楂樻柊鎶€鏈骇涓氬紑鍙戝尯", "process": "绠€鍘嗘姇閫掆啋闈㈣瘯鈫掑綍鐢?}, {"company": "涓浗绉诲姩骞胯タ鍏徃", "date": "2026-05-26", "industry": "浜掕仈缃戠鎶€", "positions": ["鏆戞湡瀹炰範鐢?IT/DT/CT鏂瑰悜)"], "cities": ["鍗楀畞", "妗傛灄", "鏌冲窞", "鐜夋灄", "鐧捐壊", "娌虫睜", "璐垫腐", "閽﹀窞", "姊у窞", "鍖楁捣", "宕囧乏", "鏉ュ", "璐哄窞", "闃插煄娓?], "target": "2027灞?, "applyLink": "https://gxyd2026sxs.zhaopin.com/", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝璁＄畻鏈?AI/杞欢/閫氫俊/鐢靛瓙淇℃伅绛変笓涓?, "address": "骞胯タ鍚勫湴甯?, "process": "缃戜笂鎶ュ悕鈫掔畝鍘嗙瓫閫夆啋绗旇瘯/娴嬭瘎鈫掔‘璁ゅ疄涔犲悕鍗曗啋瀹炰範"}, {"company": "涓浗缁垮彂鎶曡祫闆嗗洟鏈夐檺鍏徃", "date": "2026-05-25", "industry": "鐢靛姏鑳芥簮", "positions": ["鑳芥簮绉戞妧绫?, "鏅鸿兘鍖栫被", "杩愯惀鏈嶅姟绫?, "缁煎悎鑱岃兘绫?], "cities": ["鍖椾含", "涓婃捣", "閲嶅簡", "娌冲寳", "姹熻嫃", "娴欐睙", "鍥涘窛", "鏂扮枂", "闈掓捣", "鐢樿們", "鍐呰挋鍙?, "闄曡タ"], "target": "2026灞?, "applyLink": "https://zhaopin.cgdg.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝鐢垫皵/鏂拌兘婧?鍌ㄨ兘/璁＄畻鏈?AI/鏃呮父/閰掑簵/鐗╀笟/璐㈠姟/娉曞绛変笓涓?, "address": "鍏ㄥ浗澶氬湴", "process": "缃戜笂鎶ュ悕鈫掑垵闈⑩啋鑰冭瘯鈫掔粓闈⑩啋绛剧害"}, {"company": "鏂扮枂涓嘲鏂拌兘婧愭湁闄愬叕鍙?, "date": "2026-05-19", "industry": "鐢靛姏鑳芥簮", "positions": ["鍏氬缓绠＄悊宀?, "缁勭粐涓庡共閮ㄧ鐞嗗矖", "娉曞姟鍚堣绠＄悊宀?, "鐢熶骇鍊肩彮璋冨害宀?, "搴旀€ユ秷闃茬鐞嗗矖", "宸ョ▼璐ㄩ噺绠＄悊宀?, "鍖哄煙鐢熶骇鍑嗗宀?, "鍞數绠＄悊宀?], "cities": ["涔岄瞾鏈ㄩ綈", "鏂扮枂鍚勫湴"], "target": "涓嶉檺", "applyLink": "", "applyMethod": "閭鎶曢€?ztjtxnyhr@163.com)", "requirements": "鏈鍙婁互涓婏紝绠＄悊/鐢靛姏/娉曞/閲囩熆/瀹夊叏/鐢垫皵/鏂拌兘婧?甯傚満钀ラ攢绛変笓涓?, "address": "鏂扮枂涔岄瞾鏈ㄩ綈缁忓紑鍖?, "process": "绠€鍘嗘姇閫掆啋绛涢€夆啋闈㈣瘯鈫掑綍鐢?}, {"company": "鍥借兘鏂扮枂鐢樻硥鍫＄患鍚堣兘婧愭湁闄愬叕鍙?, "date": "2026-05-15", "industry": "鐢靛姏鑳芥簮", "positions": ["甯傚満浜ゆ槗宀?], "cities": ["涔岄瞾鏈ㄩ綈"], "target": "2026灞?, "applyLink": "http://zhaopin.chnenergy.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "纭曞＋锛屼汉宸ユ櫤鑳?鏁版嵁绉戝涓庡ぇ鏁版嵁鎶€鏈笓涓?, "address": "鏂扮枂涔岄瞾鏈ㄩ綈", "process": "绯荤粺鎶ュ悕鈫掑叏鍥界粺鑰?绗旇瘯+闈㈣瘯)鈫掔璁㈠崗璁啋鍏ヨ亴鎶ュ埌"}, {"company": "鐑熷彴涓滄柟濞佹€濋】鐢垫皵鏈夐檺鍏徃", "date": "2026-05-11", "industry": "鍒堕€犱笟", "positions": ["鍥藉唴鏂规钀ラ攢", "娴峰鏂规钀ラ攢", "纭欢鐮斿彂", "杞欢鐮斿彂(C/宓屽叆寮?Java/C#)", "缁撴瀯璁捐", "椤圭洰缁忕悊", "纭欢娴嬭瘯", "杞欢娴嬭瘯", "宸ヨ壓", "鎶€鏈敮鎸?, "鐢垫皵宸ョ▼甯?], "cities": ["鐑熷彴", "鍖椾含", "鍏ㄥ浗", "娴峰"], "target": "2026灞?, "applyLink": "", "applyMethod": "寰俊鎶曢€?濞佹€濋】wisdom)", "requirements": "鐢垫皵/鑷姩鍖?鐢靛瓙/璁＄畻鏈?鏈烘/鏁板/灏忚绉嶇瓑涓撲笟锛屾湰绉戝強浠ヤ笂", "address": "灞变笢鐪佺儫鍙板競鑾卞北鍖洪噾閮借矾6鍙?, "process": "鎶曢€掔畝鍘嗏啋闈㈣瘯鈫掔瑪璇曗啋纭娌熼€氣啋绛捐鍗忚"}, {"company": "瑗垮北灞?, "date": "2026-05-06", "industry": "浜掕仈缃戠鎶€", "positions": ["浜у搧绛栧垝绫?, "绋嬪簭璐ㄩ噺绫?, "杩愯惀鍙戣绫?, "缇庢湳闊抽绫?, "鑱岃兘缁煎悎绫?, "SEED璁粌钀?, "缇庢湳璁粌钀?, "闊抽璁粌钀?], "cities": ["鐝犳捣"], "target": "2026-2028灞?, "applyLink": "https://s.xoyo.com/rW18ml", "applyMethod": "缃戠敵鎶曢€?, "requirements": "涓撲笟涓嶉檺锛岀儹鐖辨父鎴忚涓?, "address": "骞夸笢鐪佺彔娴峰競", "process": "缃戠敵鈫掓祴璇勨啋绗旇瘯鈫掗潰璇曗啋offer"}, {"company": "鏉窞閾惰", "date": "2026-05-06", "industry": "閲戣瀺璇佸埜", "positions": ["鎬昏瀹炰範鐢?, "鎬昏淇℃伅鎶€鏈儴瀹炰範鐢?, "鍒嗚瀹炰範鐢?, "钀ラ攢瀹炰範鐢?, "杩愯惀瀹炰範鐢?缁煎悎鏌滃憳鏂瑰悜)", "鍒嗚淇℃伅鎶€鏈疄涔犵敓", "鏉摱鐞嗚储瀹炰範鐢?], "cities": ["鏉窞", "娴欐睙鐪佸悇鍦板競", "鍖椾含", "涓婃捣", "娣卞湷", "鍗椾含", "鍚堣偉"], "target": "2027灞?, "applyLink": "https://myjob.hzbank.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝涓撲笟璇﹁宀椾綅璇︽儏", "address": "娴欐睙鐪佸悇鍦板競鍙婂寳涓婃繁瀹佸悎", "process": "缃戠敵鈫掑湪绾挎祴璇勨啋绗旇瘯鈫掗潰璇曗啋瀹炰範鈫掕€冩牳鈫掓彁鍓嶆壒offer"}, {"company": "鍢夊叴鎭掑垱鐢靛姏闆嗗洟鏈夐檺鍏徃", "date": "2026-05-01", "industry": "鐢靛姏鑳芥簮", "positions": ["鐢靛姏宸ョ▼璁捐", "宸ョ▼寤鸿", "椤圭洰绠＄悊", "渚涚數鏈嶅姟宀?, "缁煎悎鑳芥簮宀?, "鏅烘収鐢靛姟宀?], "cities": ["鍢夊叴", "妗愪埂", "娴峰畞", "鍢夊杽"], "target": "2026灞?, "applyLink": "https://zhaopin.sgcc.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鐢靛伐绫?閫氫俊绫?璐細绫?鍦熷缓绫?宸ョ▼閫犱环绫荤瓑涓撲笟锛屾湰绉戝強浠ヤ笂", "address": "娴欐睙鐪佸槈鍏村競", "process": "缃戜笂鎶ュ悕鈫掔瑪璇曗啋闈㈣瘯鈫掑叕绀哄綍鐢?}, {"company": "涓浗姘戠敓閾惰鑻忓窞鍒嗚", "date": "2026-04-30", "industry": "閲戣瀺璇佸埜", "positions": ["鎵竼璁″垝(绠″煿)", "鍚埅璁″垝(涓氬姟楠ㄥ共)", "瀹炰範鐢?], "cities": ["鑻忓窞"], "target": "2026灞?鏍℃嫑)/2027-2028灞?瀹炰範)", "applyLink": "https://career.cmbc.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝STEM鐞嗗伐涓撲笟鎴栭噾铻嶅鍚堣儗鏅紭鍏?, "address": "鑻忓窞甯?, "process": "绠€鍘嗘姇閫掆啋娴嬭瘎鈫掔瑪璇曗啋鍒濋潰/缁堥潰鈫抩ffer鈫掑叆鑱?}, {"company": "鐢宠兘闆嗗洟", "date": "2026-04-29", "industry": "鐢靛姏鑳芥簮", "positions": ["鏆戞湡瀹炰範鐢?鑳芥簮鍔ㄥ姏/鐢垫皵/鑷姩鍖?鏈烘/鐜/鍖栧伐/鏉愭枡/閲戣瀺绛夋柟鍚?"], "cities": ["涓婃捣"], "target": "2027灞婂強涔嬪悗", "applyLink": "https://shenergy.zhiye.com/intern", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鑳芥簮鍔ㄥ姏绫?鐢垫皵宸ョ▼绫?鑷姩鍖栦笌鎺у埗绫?鏈烘宸ョ▼绫?閲戣瀺瀛︾被绛変笓涓?, "address": "涓婃捣甯?, "process": "缃戠敵鈫掔畝鍘嗙瓫閫夆啋绾夸笂娴嬭瘎鈫掗潰璇曗啋褰曠敤鍙戞斁"}, {"company": "姹熻嫃鍥戒俊浠緛鐑數鏈夐檺璐ｄ换鍏徃", "date": "2026-04-28", "industry": "鐢靛姏鑳芥簮", "positions": ["鍙戠數閮ㄩ泦鎺ц繍琛?鐑姩涓撲笟)"], "cities": ["浠緛(鎵窞)"], "target": "2025-2026灞?, "applyLink": "http://yzfd.zhaopin.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鑳芥簮涓庡姩鍔涘伐绋嬫垨闆嗘帶杩愯绛変笓涓氾紝鏈鍙婁互涓?, "address": "鎵窞锛堜华寰侊級姹借溅宸ヤ笟鍥尯", "process": "缃戜笂鎶ュ悕鈫掑垵閫夆啋绗旇瘯鈫掗潰璇曗啋褰曠敤"}, {"company": "杩愬煄瀛﹂櫌", "date": "2026-04-28", "industry": "鏁欒偛", "positions": ["瀛︾甯﹀ご浜?, "瀛︽湳闄㈤暱", "鍗氬＋鐮旂┒鐢熸暀甯堝矖", "涓撹亴杈呭鍛樺矖"], "cities": ["杩愬煄"], "target": "鍗氬＋", "applyLink": "http://www.ycu.edu.cn/", "applyMethod": "閭鎶曢€?, "requirements": "鍗氬＋鐮旂┒鐢燂紝澶氫釜瀛︾涓撲笟锛屽勾榫勪竴鑸笉瓒呰繃38鍛ㄥ瞾", "address": "灞辫タ鐪佽繍鍩庡競鐩愭箹鍖哄鏃﹁タ琛?155鍙?, "process": "绠€鍘嗘姇閫掆啋闈㈣瘯鈫掑綍鐢?浜嬩笟缂?"}, {"company": "鏉窞娴峰悍濞佽鏁板瓧鎶€鏈偂浠芥湁闄愬叕鍙?, "date": "2026-04-27", "industry": "浜掕仈缃戠鎶€", "positions": ["绠楁硶/缃戠粶瀹夊叏/澶ф暟鎹被", "鍣ㄤ欢鐢佃矾绫?, "杞欢/宓屽叆寮忕被", "纭欢/缁撴瀯绫?, "鍥藉唴钀ラ攢/鎶€鏈敮鎸佺被", "鍥介檯钀ラ攢/鎶€鏈敮鎸佺被", "娴嬭瘯/鏀拺绫?, "渚涘簲閾剧被"], "cities": ["鏉窞", "姝︽眽", "瑗垮畨", "鎴愰兘", "涓婃捣", "閲嶅簡", "妗愬簮"], "target": "2027灞?, "applyLink": "campushr.hikvision.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": "璁＄畻鏈?AI/鐢靛瓙/閫氫俊/鑷姩鍖?鏈烘绛変笓涓氾紝2027灞婁负涓?, "address": "鏉窞甯?, "process": "缃戠敵鈫掓祴璇勨啋绗旇瘯(閮ㄥ垎宀椾綅)鈫掗潰璇曗啋offer"}, {"company": "骞夸笢鑳芥簮闆嗗洟", "date": "2026-04-24", "industry": "鐢靛姏鑳芥簮", "positions": ["鎶€鏈被(鐢垫皵/鑳藉姩/鑷姩鍖?璁＄畻鏈?鏈烘/鐜鍖栧/鏂拌兘婧?", "鑱岃兘绫?璐細/绠＄悊/缁忔祹閲戣瀺/娉曞/甯傚満钀ラ攢)"], "cities": ["骞夸笢鐪佸悇鍦?, "鏂扮枂", "瑗垮寳"], "target": "2026灞?, "applyLink": "https://geg2026.zhaopin.com", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鐢垫皵绫?鑳芥簮鍔ㄥ姏绫?鑷姩鍖栫被/璁＄畻鏈虹被/璐細绫?绠＄悊绫荤瓑涓撲笟锛屾湰绉戝強浠ヤ笂", "address": "骞夸笢鐪佷负涓?, "process": "缃戠敵鈫掔瑪璇曟祴璇勨啋闈㈣瘯鑰冩牳鈫掔‘瀹氫汉閫夆啋褰曠敤"}, {"company": "涓浗姘戠敓閾惰瀹佹尝鍒嗚", "date": "2026-04-23", "industry": "閲戣瀺璇佸埜", "positions": ["鏆戞湡瀹炰範鐢?, "鍚埅鏍℃嫑鐢?], "cities": ["瀹佹尝"], "target": "2026灞?, "applyLink": "https://career.cmbc.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝STEM鐞嗗伐涓撲笟鎴栭噾铻嶅鍚堣儗鏅紭鍏?, "address": "瀹佹尝甯?, "process": "缃戠敵鈫掓祴璇勨啋绗旇瘯鈫掗潰璇曗啋offer"}, {"company": "婀栧崡鑳芥簮闆嗗洟", "date": "2026-04-20", "industry": "鐢靛姏鑳芥簮", "positions": ["绠＄悊宀?, "鎶€鏈矖", "閿€鍞矖", "鐢熶骇鎿嶄綔宀?], "cities": ["闀挎矙", "婀栧崡鐪佸悇鍦?], "target": "2026灞?, "applyLink": "https://xy.liepin.com/hnenergy/", "applyMethod": "缃戠敵鎶曢€?, "requirements": "涓撶/鏈/纭曞＋/鍗氬＋锛岃兘婧?鐢靛姏/宸ョ▼/绠＄悊绛変笓涓?, "address": "婀栧崡鐪侀暱娌欏競宀抽簱鍖哄惈娴﹀寳璺?99鍙?, "process": "鍏憡鍙戝竷鈫掕祫鏍煎鏌モ啋绗旇瘯鈫掗潰璇曗啋鑰冨療浣撴鈫掑叕绀衡啋褰曠敤"}, {"company": "涓浗姘戠敓閾惰鏉窞鍒嗚", "date": "2026-04-20", "industry": "閲戣瀺璇佸埜", "positions": ["鎵竼璁″垝(绠″煿)", "鍚埅璁″垝(涓氬姟楠ㄥ共)", "瀹炰範鐢?], "cities": ["鏉窞", "缁嶅叴", "鍢夊叴", "鍙板窞", "閲戝崕", "鑸熷北", "婀栧窞"], "target": "2026灞?鏍℃嫑)/2027-2028灞?瀹炰範)", "applyLink": "https://career.cmbc.com.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝STEM鐞嗗伐涓撲笟鎴栭噾铻嶅鍚堣儗鏅紭鍏?, "address": "娴欐睙鐪佸悇鍦板競", "process": "缃戠敵鈫掓祴璇勨啋绗旇瘯鈫掑垵闈?缁堥潰鈫抩ffer鈫掑叆鑱?}, {"company": "涓浗鐢靛缓璐靛窞闄?, "date": "2026-04-16", "industry": "鐢靛姏鑳芥簮", "positions": ["鐢垫皵宸ョ▼甯?, "缁撴瀯宸ョ▼甯?, "鑳芥簮宸ョ▼甯?, "宸ョ▼閫犱环", "鍦扮悊淇℃伅宸ョ▼甯?, "鍦拌川宸ョ▼甯?], "cities": ["璐甸槼"], "target": "2026灞?, "applyLink": "https://zhaopin.powerchina.cn/", "applyMethod": "缃戠敵鎶曢€?, "requirements": "纭曞＋鍙婁互涓婏紝鐢垫皵/鍦熸湪/鑳芥簮/鎶€鏈粡娴?鍦扮悊淇℃伅/鍦拌川绛変笓涓?, "address": "璐靛窞鐪佽吹闃冲競", "process": "绠€鍘嗘姇閫掆啋绛涢€夆啋缁煎悎娴嬭瘎鈫掑綍鐢ㄥ鏌モ啋褰曞彇"}, {"company": "娌冲崡妫簮鐢垫皵鑲′唤鏈夐檺鍏徃", "date": "2026-04-16", "industry": "鍒堕€犱笟", "positions": ["鐢垫皵/鏈烘/妯″叿璁捐宸ョ▼甯?, "鐢垫皵/鏈烘鐮斿彂宸ョ▼甯?, "璐ㄩ噺/宸ヨ壓宸ョ▼甯?, "鍏呯數妗╁祵鍏ュ紡杞欢/纭欢寮€鍙戝伐绋嬪笀", "鍏呯數妗╃粨鏋?娴嬭瘯宸ョ▼甯?, "閿€鍞伐绋嬪笀", "鐢熶骇绠＄悊鍌ㄥ骞查儴", "璐㈠姟涓撳憳", "渚涘簲閾剧鐞嗕笓鍛?], "cities": ["璁告槍", "閮戝窞", "鍖椾含", "骞垮窞", "鏂扮枂"], "target": "搴斿線灞婂潎鍙?, "applyLink": "", "applyMethod": "寰俊鎶曢€?妫簮鐢垫皵002358)", "requirements": "鐢垫皵/鏈烘/鑷姩鍖?璁＄畻鏈?甯傚満钀ラ攢/绠＄悊/璐㈠姟绛変笓涓氾紝鏈鍙婁互涓?, "address": "娌冲崡鐪佽鏄屽競", "process": "绠€鍘嗘姇閫掆啋绠€鍘嗙瓫閫夆啋闈㈣瘯鈫抩ffer鍙戞斁"}, {"company": "涓浗骞挎牳鏂拌兘婧愭帶鑲℃湁闄愬叕鍙?, "date": "2026-04-16", "industry": "鐢靛姏鑳芥簮", "positions": ["椋庣數/鍏変紡/鍏夌儹/鎶借搫/鍌ㄨ兘/姘㈣兘/姘寸數绛夊叏涓氬姟宀椾綅"], "cities": ["鍏ㄥ浗"], "target": "2025-2026灞?, "applyLink": "https://cgn.hotjob.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "宸ュ/鐞嗗/缁忔祹瀛?绠＄悊瀛?娉曞绛変笓涓氾紝鍗氬＋/纭曞＋/鏈/澶т笓", "address": "鍏ㄥ浗", "process": "缃戠敵鈫掓祴璇勨啋绗旇瘯鈫掗潰璇曗啋浣撴鈫掔绾?}, {"company": "涓北绮ゆ捣鑳芥簮鏈夐檺鍏徃", "date": "2026-04-13", "industry": "鐢靛姏鑳芥簮", "positions": ["鐑帶璁惧妫€淇?, "鍙戠數闆嗘帶鍊肩彮鍛?], "cities": ["涓北"], "target": "2026灞?, "applyLink": "http://gdh.zhiye.com/", "applyMethod": "缃戠敵鎶曢€掓垨閭鎶曢€?, "requirements": "鐑伐鎺у埗/鑷姩鍖?鑳芥簮涓庡姩鍔涘伐绋?鐢垫皵宸ョ▼绛変笓涓氾紝鏈鍙婁互涓?, "address": "骞夸笢鐪佷腑灞卞競", "process": "绠€鍘嗘姇閫掆啋鍒濋潰鈫掔粓闈⑩啋浣撴鈫掑綍鐢ㄢ啋绛捐灏变笟鍗忚"}, {"company": "鍗庢鼎鐢靛姏鎶曡祫鏈夐檺鍏徃", "date": "2026-04-10", "industry": "鐢靛姏鑳芥簮", "positions": ["鍟嗕笟鍒嗘瀽绫?, "鏁版嵁淇℃伅绫?, "甯傚満寮€鍙戠被", "涓撲笟鎶€鏈被(鐢垫皵/椋庢満/姹芥満/瀹夊叏/閿呯倝)", "鐢熶骇杩愯绫?闆嗘帶宸℃/杩愯)", "鑱岃兘绠＄悊绫?浜哄姏/璐㈠姟/琛屾斂)"], "cities": ["鍏ㄥ浗32涓渷甯?], "target": "2025-2026灞?, "applyLink": "https://CRP.hotjob.cn", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鐢垫皵/鑳藉姩/鑷姩鍖?璁＄畻鏈?缁熻瀛?璐㈠姟/浜哄姏绛変笓涓?, "address": "鍏ㄥ浗", "process": "缃戠敵鍙婄畝鍘嗙瓫閫夆啋鍒濊瘯鈫掑湪绾挎祴璇勨啋澶嶈瘯鈫掍綋妫€鈫掑綍鐢ㄩ€氱煡"}, {"company": "涓浗鍏夊ぇ閾惰涓婃捣鍒嗚", "date": "2026-04-10", "industry": "閲戣瀺璇佸埜", "positions": ["瀹㈡埛缁忕悊宀?甯傚満钀ラ攢绫?", "閲戣瀺绉戞妧宀?], "cities": ["涓婃捣"], "target": "2025-2026灞?, "applyLink": "https://eoap.cebbank.com/uiap/wt/CEB/zpzh/detail", "applyMethod": "缃戠敵鎶曢€?, "requirements": "鏈鍙婁互涓婏紝IT鐩稿叧涓撲笟(閲戣瀺绉戞妧宀?锛屼笓涓氫笉闄?瀹㈡埛缁忕悊宀?", "address": "涓婃捣甯?, "process": "缃戜笂鎶ュ悕鈫掔畝鍘嗙瓫閫夆啋鍦ㄧ嚎娴嬭瘎鍙婄瑪璇曗啋闈㈣瘯鈫掔绾︹啋鍏ヨ亴"}, {"company": "姹熻タ閾惰2026鏄ュ鏍″洯鎷涜仒鍚簨", "date": "2026-04-09", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667268"}, {"company": "涓浗涓夊场鏂拌兘婧愶紙闆嗗洟锛夎偂浠芥湁闄愬叕鍙? 2026骞存槬瀛ｆ牎鍥嫑鑱樺叕鍛?, "date": "2026-04-09", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667267"}, {"company": "銆愪腑鍥界煶鍖栥€戜腑澶╁悎鍒涜兘婧愭湁闄愯矗浠诲叕鍙稿寲宸ュ垎鍏徃2026骞存槬瀛ｆ牎鍥嫑鑱樺叕鍛?, "date": "2026-04-08", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667264"}, {"company": "鏉窞鐮虹泩绉戞妧鏈夐檺鍏徃", "date": "2026-04-08", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "鏉窞"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667265"}, {"company": "铏庣墮2026灞婃槬瀛ｆ牎鎷涚伀鐑繘琛屼腑锛?, "date": "2026-04-07", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "骞垮窞"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667261"}, {"company": "澶ц繛閾惰2026灞婃槬瀛ｆ牎鍥嫑鑱樺叕鍛?, "date": "2026-04-07", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "澶ц繛"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667262"}, {"company": "娴欏晢閾惰瀹佹尝鍒嗚2026鏄ュ鏍″洯", "date": "2026-04-07", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "瀹佹尝"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667260"}, {"company": "骞夸笢澶╁畨椤圭洰绠＄悊鏈夐檺鍏徃2026骞存槬瀛ｆ牎鍥?, "date": "2026-04-07", "industry": "寤虹瓚鏂藉伐", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667259"}, {"company": "閲戣瀺澹硅处閫?026鏍″洯鎷涜仒绠€绔?, "date": "2026-04-03", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "娣卞湷"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667258"}, {"company": "涓叅鏂伴泦鑳芥簮鑲′唤鏈夐檺鍏徃2026骞存牎鍥嫑鑱樼畝绔狅紙鏄ユ嫑锛?, "date": "2026-04-02", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667257"}, {"company": "瀹濅赴闆嗗洟2026骞存槬瀛ｆ牎鍥嫑鑱樼畝绔?, "date": "2026-04-01", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667256"}, {"company": "绉戝ぇ鍥藉垱杞欢鑲′唤鏈夐檺鍏徃", "date": "2026-04-01", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667254"}, {"company": "鏉窞涓€绫虫埧鍦颁骇缁忕邯鏈夐檺鍏徃", "date": "2026-04-01", "industry": "鍏朵粬", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "鏉窞"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667255"}, {"company": "鍗庨槼寤烘姇闃虫硥鐑數鏈夐檺璐ｄ换鍏徃  2026骞存槬瀛ｆ牎鍥嫑鑱樺叕鍛?, "date": "2026-03-31", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "闃虫硥"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667252"}, {"company": "娓ゆ捣閾惰2026骞存牎鍥嫑鑱樼畝绔?, "date": "2026-03-31", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667250"}, {"company": "姹熻嫃鐪佸浗淇￠泦鍥?026骞存槬瀛ｆ牎鍥嫑鑱樺叕鍛?, "date": "2026-03-30", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667248"}, {"company": "鍥犱负銆岀浉淇°€嶏紝鎵€浠ャ€岀湅瑙併€嶏綔鍥芥嘲娴烽€氳瘉鍒镐笂娴峰垎鍏徃2026绠″煿鐢熺粍闃烮NG  鈥斺€斺€旂粰姊︽兂涓€涓《绾ц窇閬擄紒", "date": "2026-03-30", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667247"}, {"company": "姹熻タ璧ｈ兘鑲′唤鏈夐檺鍏徃涓板煄鍙戠數鍘?, "date": "2026-03-27", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667244"}, {"company": "涓浗宸ュ晢閾惰骞胯タ鍒嗚2026骞村害鏄ュ鏍″洯鎷涜仒鍏憡", "date": "2026-03-27", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667243"}, {"company": "鍥炬湪鑸掑厠鑱屼笟鎶€鏈闄㈠紩杩涙€ラ渶浜烘墠鍏憡", "date": "2026-03-27", "industry": "鏁欒偛", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667242"}, {"company": "涓芥按绉诲姩2026灞婃槬瀛ｆ牎鍥嫑鑱樻嫑鑱樼畝绔?, "date": "2026-03-26", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "涓芥按"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667240"}, {"company": "姹熻嫃閭︽嘲鐢垫皵鏈夐檺鍏徃", "date": "2026-03-26", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667239"}, {"company": "鍏夊疂鏂板垱绉戞妧锛堝寳浜級鏈夐檺鍏徃", "date": "2026-03-25", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "鍖椾含"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667238"}, {"company": "浜氫俊绉戞妧锛堜腑鍥斤級鏈夐檺鍏徃", "date": "2026-03-25", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667237"}, {"company": "涓濊姍鍏帮紙涓婃捣锛夊寲濡嗗搧閿€鍞湁闄愬叕鍙?, "date": "2026-03-25", "industry": "鍏朵粬", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667236"}, {"company": "涓浗绉诲姩瀹佹尝鍒嗗叕鍙歌瘹閭€  2026灞婃牎鍥簲灞婃瘯涓氱敓鍔犵洘锛?, "date": "2026-03-24", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "瀹佹尝"], "target": "2026灞婃牎鍥簲灞婃瘯涓氱敓", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667235"}, {"company": "闃挎柉楹?ASML)2026鏄ュ鏍″洯", "date": "2026-03-24", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667233"}, {"company": "涓浗鍐滀笟閾惰娴欐睙鐪佸垎琛?026骞村害鏄ュ鏍″洯", "date": "2026-03-23", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667232"}, {"company": "涓浗绉诲姩閫氫俊闆嗗洟浜戝崡鏈夐檺鍏徃2026鏄ュ鏍″洯鎷涜仒鍏憡", "date": "2026-03-23", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667231"}, {"company": "绁為┈鐢靛姏2026灞婃牎鍥嫑鑱樼畝绔?, "date": "2026-03-23", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667230"}, {"company": "涓浗鐢靛缓闆嗗洟瑗垮寳鍕樻祴璁捐鐮旂┒闄㈡湁闄愬叕鍙?026灞婃牎鍥嫑鑱樺叕鍛?, "date": "2026-03-23", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667228"}, {"company": "涓浗澶у攼闆嗗洟鏈夐檺鍏徃閲嶅簡鍒嗗叕鍙?026骞撮珮鏍℃瘯涓氱敓鏄ュ鎷涜仒鍏憡", "date": "2026-03-21", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "閲嶅簡"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667227"}, {"company": "瀹濋挗婀涙睙閽㈤搧鏈夐檺鍏徃2026灞婃槬瀛ｆ牎鍥嫑鑱樼畝绔?, "date": "2026-03-20", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "婀涙睙"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667226"}, {"company": "娌冲寳鏂板ぉ绉戝垱鏂拌兘婧愭妧鏈湁闄愬叕鍙?, "date": "2026-03-19", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667225"}, {"company": "涓浗绉诲姩閫氫俊闆嗗洟闄曡タ鏈夐檺鍏徃 2026鏄ュ鏍″洯鎷涜仒鍏憡", "date": "2026-03-19", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667224"}, {"company": "鐢靛晢鐙鍏?鎺屼笂鍏堟満/鎱х瓥-2026鏍″洯", "date": "2026-03-18", "industry": "浜掕仈缃戠鎶€", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "鍖椾含"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667223"}, {"company": "涓浗閾惰鑲′唤鏈夐檺鍏徃涓婃捣甯傚垎琛?026鏄ュ鎷涜仒鍜屽疄涔犵敓鎷涜仒绠€绔?, "date": "2026-03-18", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667222"}, {"company": "涓浗閾惰鏂扮枂缁村惥灏旇嚜娌诲尯鍒嗚2026骞?鏄ュ鎷涜仒鍏憡", "date": "2026-03-18", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667221"}, {"company": "鐢宠兘鑲′唤鏈夐檺鍏徃鎷涜仒绠€绔?, "date": "2026-03-18", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667220"}, {"company": "骞夸笢鐪佺儫鑽変笓鍗栧眬锛堝叕鍙革級 2026骞村害楂樻牎姣曚笟鐢熸嫑鑱樺叕鍛?, "date": "2026-03-18", "industry": "鍏朵粬", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667219"}, {"company": "涓浗寤鸿閾惰涓婃捣甯傚垎琛?026骞村害鏄ュ鏍″洯鎷涜仒鍏憡", "date": "2026-03-17", "industry": "閲戣瀺璇佸埜", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667218"}, {"company": "婀栧寳浜ら€氭姇璧勯泦鍥㈡湁闄愬叕鍙?2026骞存槬瀛ｆ牎鍥嫑鑱樺叕鍛?, "date": "2026-03-17", "industry": "寤虹瓚鏂藉伐", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667217"}, {"company": "骞夸笢鐢电綉2026骞存槬瀛ｆ牎鍥嫑鑱樻寮忓惎鍔紒", "date": "2026-03-17", "industry": "鐢靛姏鑳芥簮", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667216"}, {"company": "姝ｆ旦鍒涙柊EcoFlow 2026灞婃槬瀛ｆ牎鍥?, "date": "2026-03-17", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣", "娣卞湷"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667215"}, {"company": "涓婃捣澶栫數鍥介檯璐告槗鏈夐檺鍏徃", "date": "2026-03-17", "industry": "鍏朵粬", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667214"}, {"company": "鍥界摲鏉愭枡2026灞婃槬瀛ｆ牎鍥?, "date": "2026-03-17", "industry": "鍒堕€犱笟", "positions": ["瀹炰範宀?, "鍏ㄨ亴宀?], "cities": ["涓婃捣"], "target": "", "applyLink": "", "applyMethod": "鐜板満鎶曢€掋€侀偖绠辨姇閫?, "requirements": [], "address": "", "process": "", "detailUrl": "https://career.shiep.edu.cn/campus/view/id/667210"}];
 
 DATA.sort(function(a, b) { return b.date.localeCompare(a.date); });
 
 var logoClasses = {
-  '电力能源': 'logo-energy',
-  '金融证券': 'logo-finance',
-  '互联网科技': 'logo-tech',
-  '制造业': 'logo-manufacture',
-  '建筑施工': 'logo-construction',
-  '教育': 'logo-education',
-  '其他': 'logo-other'
+  '鐢靛姏鑳芥簮': 'logo-energy',
+  '閲戣瀺璇佸埜': 'logo-finance',
+  '浜掕仈缃戠鎶€': 'logo-tech',
+  '鍒堕€犱笟': 'logo-manufacture',
+  '寤虹瓚鏂藉伐': 'logo-construction',
+  '鏁欒偛': 'logo-education',
+  '鍏朵粬': 'logo-other'
+};
+
+var badgeClasses = {
+  '鐢靛姏鑳芥簮': 'badge-energy',
+  '閲戣瀺璇佸埜': 'badge-finance',
+  '浜掕仈缃戠鎶€': 'badge-tech',
+  '鍒堕€犱笟': 'badge-manufacture',
+  '寤虹瓚鏂藉伐': 'badge-construction',
+  '鏁欒偛': 'badge-education',
+  '鍏朵粬': ''
 };
 
 function getLogo(company, industry) {
-  var c = company.charCodeAt(0) % 7;
   var cls = logoClasses[industry] || 'logo-other';
   return '<div class="company-logo ' + cls + '">' + company.charAt(0) + '</div>';
 }
 
 function formatDate(d) {
+  if (!d) return '';
+  var parts = d.split('-');
+  if (parts.length === 3) {
+    return parts[1] + '鏈? + parts[2] + '鏃?;
+  }
   return d;
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 function renderCards() {
   var search = (document.getElementById('searchInput').value || '').toLowerCase();
   var industryFilter = document.getElementById('industryFilter').value;
-  var typeFilter = document.getElementById('typeFilter').value;
 
   var filtered = DATA.filter(function(item) {
-    if (search && item.company.toLowerCase().indexOf(search) === -1) return false;
     if (industryFilter && item.industry !== industryFilter) return false;
-    if (typeFilter && item.type !== typeFilter) return false;
+    if (search) {
+      var haystack = (item.company + ' ' + (item.positions||[]).join(' ') + ' ' + (item.cities||[]).join(' ') + ' ' + (item.requirements||'').replace(/\[/g,'').replace(/\]/g,'') + ' ' + (item.target||'')).toLowerCase();
+      if (haystack.indexOf(search) === -1) return false;
+    }
     return true;
   });
 
   var container = document.getElementById('cardsContainer');
   if (filtered.length === 0) {
-    container.innerHTML = '<div class="empty-state"><p>😶 没有找到匹配的岗位，试试调整筛选条件</p></div>';
+    container.innerHTML = '<div class="empty-state"><div class="icon">馃樁</div><p>娌℃湁鎵惧埌鍖归厤鐨勫矖浣嶏紝璇曡瘯璋冩暣绛涢€夋潯浠?/p></div>';
   } else {
     container.innerHTML = filtered.map(function(item) {
+      var positions = (item.positions && item.positions.length > 0 && item.positions[0])
+        ? item.positions.map(function(p) {
+            return '<span class="position-tag">' + escHtml(p) + '</span>';
+          }).join('')
+        : '';
+      var cities = (item.cities && item.cities.length > 0)
+        ? item.cities.map(function(c) {
+            return '<span class="city-tag">' + escHtml(c) + '</span>';
+          }).join('')
+        : '';
+      
+      var sections = [];
+
+      // Positions
+      if (positions) {
+        sections.push('<div class="info-section"><div class="info-label">馃搵 鎷涜仒宀椾綅</div><div class="positions-list">' + positions + '</div></div>');
+      }
+
+      // Requirements + Target
+      var reqLines = [];
+      if (item.target) reqLines.push('<strong>闈㈠悜锛?/strong>' + escHtml(item.target));
+      if (item.requirements) reqLines.push('<strong>瑕佹眰锛?/strong>' + escHtml(typeof item.requirements === 'string' ? item.requirements : item.requirements.join('锛?)));
+      if (reqLines.length > 0) {
+        sections.push('<div class="info-section"><div class="info-label">馃摑 宀椾綅瑕佹眰</div><div class="info-text">' + reqLines.join('<br>') + '</div></div>');
+      }
+
+      // Cities
+      if (cities) {
+        sections.push('<div class="info-section"><div class="info-label">馃搷 宸ヤ綔鍦扮偣</div><div class="city-list">' + cities + '</div></div>');
+      }
+
+      // Apply method + link
+      var applyParts = [];
+      if (item.applyMethod) applyParts.push('<strong>鎶曢€掓柟寮忥細</strong>' + escHtml(item.applyMethod));
+      if (item.applyLink) {
+        var displayLink = item.applyLink.length > 50 ? item.applyLink.substring(0, 50) + '...' : item.applyLink;
+        applyParts.push('<a class="apply-link" href="' + escHtml(item.applyLink) + '" target="_blank" rel="noopener">馃敆 ' + escHtml(displayLink) + '</a>');
+      }
+      if (applyParts.length > 0) {
+        sections.push('<div class="info-section"><div class="info-label">馃摦 鎶曢€掓柟寮?/div><div class="info-text">' + applyParts.join('<br>') + '</div></div>');
+      }
+
+      // Process
+      if (item.process) {
+        sections.push('<div class="info-section"><div class="info-label">馃攧 鎷涜仒娴佺▼</div><div class="process-text">' + escHtml(item.process) + '</div></div>');
+      }
+
+      // Address
+      if (item.address && item.address.length > 3) {
+        sections.push('<div class="info-section"><div class="info-label">馃彚 鍏徃鍦板潃</div><div class="info-text" style="font-size:0.82rem">' + escHtml(item.address) + '</div></div>');
+      }
+
       return '<div class="job-card">' +
-        getLogo(item.company, item.industry) +
-        '<div class="card-info">' +
-          '<div class="card-company" title="' + item.company + '">' + item.company + '</div>' +
-          '<div class="card-meta">' + formatDate(item.date) + '</div>' +
+        '<div class="card-header">' +
+          getLogo(item.company, item.industry) +
+          '<div class="card-title-section">' +
+            '<div class="card-company-row">' +
+              '<span class="card-company">' + escHtml(item.company) + '</span>' +
+              '<span class="card-date">' + formatDate(item.date) + '</span>' +
+            '</div>' +
+            '<div class="badge-row">' +
+              '<span class="badge ' + (badgeClasses[item.industry] || '') + '" style="' + (badgeClasses[item.industry] ? '' : 'background:#f8fafc;color:#475569') + '">' + escHtml(item.industry) + '</span>' +
+              (item.target ? '<span class="badge badge-target">馃幆 ' + escHtml(item.target) + '</span>' : '') +
+            '</div>' +
+          '</div>' +
         '</div>' +
-        '<div class="card-tags">' +
-          '<span class="tag tag-industry">' + item.industry + '</span>' +
-          '<span class="tag tag-type">' + item.type + '</span>' +
-        '</div>' +
+        '<div class="card-body">' + sections.join('') + '</div>' +
       '</div>';
     }).join('');
   }
 
-  document.getElementById('resultCount').textContent = '共 ' + filtered.length + ' 条';
+  document.getElementById('resultCount').textContent = '鍏?' + filtered.length + ' 鏉?;
   updateStats();
 }
 
 function updateStats() {
   document.getElementById('totalCount').textContent = DATA.length;
-  document.getElementById('energyCount').textContent = DATA.filter(function(i){return i.industry==='电力能源'}).length;
-  document.getElementById('financeCount').textContent = DATA.filter(function(i){return i.industry==='金融证券'}).length;
-  document.getElementById('techCount').textContent = DATA.filter(function(i){return i.industry==='互联网科技'}).length;
+  document.getElementById('energyCount').textContent = DATA.filter(function(i){return i.industry==='鐢靛姏鑳芥簮'}).length;
+  document.getElementById('financeCount').textContent = DATA.filter(function(i){return i.industry==='閲戣瀺璇佸埜'}).length;
+  document.getElementById('techCount').textContent = DATA.filter(function(i){return i.industry==='浜掕仈缃戠鎶€'}).length;
+  document.getElementById('mfgCount').textContent = DATA.filter(function(i){return i.industry==='鍒堕€犱笟'}).length;
 }
 
 function clearFilters() {
   document.getElementById('searchInput').value = '';
   document.getElementById('industryFilter').value = '';
-  document.getElementById('typeFilter').value = '';
   renderCards();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('updateTime').textContent = '馃搮 鏁版嵁鏇存柊锛?026-08-04 路 鍏?' + DATA.length + ' 鏉″矖浣嶄俊鎭?;
   renderCards();
 });
 </script>
